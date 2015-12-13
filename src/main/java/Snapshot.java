@@ -49,8 +49,11 @@ public class Snapshot extends HttpServlet {
         // into integer pixels
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         
+        
         Graphics2D ig2 = bi.createGraphics();
         
+        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/sync_disabled.png");
+          Image syncImage = ImageIO.read(inputStream);
         
         Font font = new Font("TimesRoman", Font.BOLD, 20);
         ig2.setFont(font);
@@ -59,14 +62,16 @@ public class Snapshot extends HttpServlet {
         int stringWidth = fontMetrics.stringWidth(message);
         int stringHeight = fontMetrics.getAscent();
         ig2.setPaint(Color.red);
-        ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
+        ig2.drawImage(syncImage,0, 0, 500, 500,
+                      0, 0, 500, 500,
+                      null);
+       // ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
         
         
         
         
         
-      //  InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/sync_disabled.png");
-    
+        
         response.setContentType("image/png");
         
        // String pathToWeb = getServletContext().getRealPath(File.separator);
