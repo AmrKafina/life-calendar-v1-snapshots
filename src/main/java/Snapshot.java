@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.OutputStream;
 import java.io.InputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
 import javax.imageio.ImageIO;
 
 
