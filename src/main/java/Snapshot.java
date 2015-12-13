@@ -58,7 +58,7 @@ public class Snapshot extends HttpServlet {
         FontMetrics fontMetrics = ig2.getFontMetrics();
         int stringWidth = fontMetrics.stringWidth(message);
         int stringHeight = fontMetrics.getAscent();
-        ig2.setPaint(Color.black);
+        ig2.setPaint(Color.white);
         ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
         
         
