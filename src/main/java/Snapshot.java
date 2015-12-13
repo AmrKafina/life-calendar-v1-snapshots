@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Snapshot extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
-    public DoubleMeServlet() {
+    public Snapshot() {
         super();
         
     }
