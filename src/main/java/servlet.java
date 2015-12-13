@@ -4,9 +4,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 
-@WebServlet("/snapshot")
+@WebServlet(name = "snapshot",urlPatterns = {"/snapshots/*"})
+@MultipartConfig
 // Extend HttpServlet class
-public class HelloWorld extends HttpServlet {
+public class Snapshot extends HttpServlet {
  
   private String message;
 
