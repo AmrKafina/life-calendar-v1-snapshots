@@ -65,7 +65,7 @@ public class Snapshot extends HttpServlet {
             
             String dataToNumbers = "Year colors: ";
             for (int i = 0; i < sentData.length; i++)
-                dataToNumbers += sentData[i].toString();
+                dataToNumbers += "" + sentData[i];
             
             writer.write(dataToNumbers);
             writer.flush();
