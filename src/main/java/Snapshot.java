@@ -10,7 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/snapshot")
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.OutputStream;
+import javax.imageio.ImageIO;
+
+
+@WebServlet(name = "snapshot",urlPatterns = {"/snapshot/*"})
+@MultipartConfig
 public class Snapshot extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -21,8 +28,14 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        response.getOutputStream().println("Hurray !! This Servlet Works");
+        response.setContentType("image/png");
         
+        String pathToWeb = getServletContext().getRealPath(File.separator);
+        File f = new File(pathToWeb + "sync_problem.png");
+        BufferedImage bi = ImageIO.read(f);
+        OutputStream out = response.getOutputStream();
+        ImageIO.write(bi, "png", out);
+        out.close();
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,5 +71,16 @@ public class Snapshot extends HttpServlet {
             }
         }   
     }
+    
+    private String getFileName(Part part) {
+        for (String cd : part.getHeader("content-disposition").split(";")) {
+            if (cd.trim().startsWith("filename")) {
+                return cd.substring(cd.indexOf('=') + 1).trim()
+                .replace("\"", "");
+            }
+        }
+        return null;
+    }
+    
     
 }
