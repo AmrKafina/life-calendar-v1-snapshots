@@ -1,4 +1,4 @@
-package main.java
+package main.java;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -48,9 +48,7 @@ public class Snapshot extends HttpServlet {
             writer.close();
             
             
-            
         } catch (IOException e) {
-            
             
             try{
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
