@@ -80,7 +80,10 @@ public class Snapshot extends HttpServlet {
                 response.getWriter().close();
             } catch (IOException ioe) {
             }
-        }   
+        }
+        catch (Exception e) {
+            
+        }
     }
     
 
