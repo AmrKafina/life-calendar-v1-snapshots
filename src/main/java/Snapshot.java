@@ -41,9 +41,9 @@ public class Snapshot extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
-            Integer doubledValue = Integer.parseInt(recievedString) * 2;
+            String replyString = "Received: " + recievedString;
             
-            writer.write(doubledValue.toString());
+            writer.write(replyString);
             writer.flush();
             writer.close();
             
