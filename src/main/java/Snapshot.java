@@ -54,13 +54,18 @@ public class Snapshot extends HttpServlet {
             }
             sin.close();
             
-            String recievedString = new String(input);
+            ByteArrayInputStream bis = new ByteArrayInputStream(input);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            int[] sentData = (int[])ois.readObject();
+            
             response.setStatus(HttpServletResponse.SC_OK);
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
-            String replyString = "Received: " + recievedString;
+            String dataToNumbers = "Year colors: ";
+            for (int i = 0; i < sentData.length; i++)
+                dataToNumbers += sentData[i].toString();
             
-            writer.write(replyString);
+            writer.write(dataToNumbers);
             writer.flush();
             writer.close();
             
