@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.OutputStream;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 
