@@ -18,6 +18,17 @@ import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import javax.imageio.ImageIO;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 
 @WebServlet(name = "snapshot",urlPatterns = {"/snapshot/*"})
 public class Snapshot extends HttpServlet {
@@ -31,8 +42,30 @@ public class Snapshot extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         
-        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/sync_disabled.png");
-
+        
+        int width = 200, height = 200;
+        
+        // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
+        // into integer pixels
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        
+        Graphics2D ig2 = bi.createGraphics();
+        
+        
+        Font font = new Font("TimesRoman", Font.BOLD, 20);
+        ig2.setFont(font);
+        String message = "www.java2s.com!";
+        FontMetrics fontMetrics = ig2.getFontMetrics();
+        int stringWidth = fontMetrics.stringWidth(message);
+        int stringHeight = fontMetrics.getAscent();
+        ig2.setPaint(Color.black);
+        ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
+        
+        
+        
+        
+        
+      //  InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/sync_disabled.png");
     
         response.setContentType("image/png");
         
