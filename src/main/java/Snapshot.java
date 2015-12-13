@@ -27,11 +27,15 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        
+        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/sync_disabled.png");
+
+    
         response.setContentType("image/png");
         
-        String pathToWeb = getServletContext().getRealPath(File.separator);
-        File f = new File(pathToWeb + "sync_problem.png");
-        BufferedImage bi = ImageIO.read(f);
+       // String pathToWeb = getServletContext().getRealPath(File.separator);
+       // File f = new File(pathToWeb + "sync_problem.png");
+        BufferedImage bi = ImageIO.read(inputStream);
         OutputStream out = response.getOutputStream();
         ImageIO.write(bi, "png", out);
         out.close();
