@@ -71,7 +71,7 @@ public class Snapshot extends HttpServlet {
         
        // String pathToWeb = getServletContext().getRealPath(File.separator);
        // File f = new File(pathToWeb + "sync_problem.png");
-        BufferedImage bi = ImageIO.read(inputStream);
+      //  BufferedImage bi = ImageIO.read(inputStream);
         OutputStream out = response.getOutputStream();
         ImageIO.write(bi, "png", out);
         out.close();
