@@ -43,7 +43,7 @@ public class Snapshot extends HttpServlet {
         
         
         
-        int width = 200, height = 200;
+        int width = 2000, height = 2000;
         
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
         // into integer pixels
