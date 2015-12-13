@@ -17,7 +17,6 @@ import javax.imageio.ImageIO;
 
 
 @WebServlet(name = "snapshot",urlPatterns = {"/snapshot/*"})
-@MultipartConfig
 public class Snapshot extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -72,15 +71,6 @@ public class Snapshot extends HttpServlet {
         }   
     }
     
-    private String getFileName(Part part) {
-        for (String cd : part.getHeader("content-disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                return cd.substring(cd.indexOf('=') + 1).trim()
-                .replace("\"", "");
-            }
-        }
-        return null;
-    }
-    
+
     
 }
