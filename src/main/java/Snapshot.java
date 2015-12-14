@@ -50,29 +50,46 @@ public class Snapshot extends HttpServlet {
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
         // into integer pixels
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        
-        
         Graphics2D ig2 = bi.createGraphics();
         
-        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/sync_disabled.png");
-          Image syncImage = ImageIO.read(inputStream);
+        // loads the images from memory
+        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
+          Image yearCircleBlack = ImageIO.read(inputStream);
         
-        Font font = new Font("TimesRoman", Font.BOLD, 20);
-        ig2.setFont(font);
-        String message = "www.java2s.com!";
-        FontMetrics fontMetrics = ig2.getFontMetrics();
-        int stringWidth = fontMetrics.stringWidth(message);
-        int stringHeight = fontMetrics.getAscent();
-        ig2.setPaint(Color.red);
-        ig2.drawImage(syncImage,0, 0, 500, 500,
-                      0, 0, 500, 500,
-                      null);
-       // ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_blue.png");
+        Image yearCircleBlue = ImageIO.read(inputStream);
+
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_green.png");
+        Image yearCircleGreen = ImageIO.read(inputStream);
+
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
+        Image yearCircleGrey = ImageIO.read(inputStream);
+
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_pink.png");
+        Image yearCirclePink = ImageIO.read(inputStream);
+
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_purple.png");
+        Image yearCirclePurple = ImageIO.read(inputStream);
+
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_red.png");
+        Image yearCircleRed = ImageIO.read(inputStream);
         
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_yellow.png");
+        Image yearCircleYellow = ImageIO.read(inputStream);
+
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
+        Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
+    
         
+        for (int i = 0; i < 90; i++) {
         
-        
-        
+            if (i % 4 == 0)
+                ig2.drawImage(yearCircleBlue, (10 + i * 10), 30, (10 + i * 30), (30 + i * 30), 0, 0, yearCircleBlue.getWidth(), yearCircleBlue.getHeight(), null);
+            else if (i % 4 == 2)
+                ig2.drawImage(yearCircleRed, (10 + i * 10), 90, (10 + i * 30), (90 + i * 30), 0, 0, yearCircleRed.getWidth(), yearCircleRed.getHeight(), null);
+            
+        }
+
         
         response.setContentType("image/png");
         
