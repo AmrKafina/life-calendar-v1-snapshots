@@ -85,20 +85,20 @@ public class Snapshot extends HttpServlet {
         int topPadding = 179;
         int bottomPadding = 178;
         int circleSize = 65;
-        int rowNumber = 1;
+        int rowNumber = 0;
         
         for (int i = 0; rowNumber < 10; i++) {
         
-         
-            ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin + circleSize),
-                          (topPadding + rowNumber * circleSize + margin + circleSize), 0, 0, circleSize, circleSize, null);
-
             if (i == 10) { // starts a new row every 10 circles
                 rowNumber++;
                 i = 0;
+                if (rowNumber == 11)
+                    break;
             }
             
-         
+            ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin + circleSize),
+                          (topPadding + rowNumber * circleSize + margin + circleSize), 0, 0, circleSize, circleSize, null);
+
         }
         
         response.setContentType("image/png");
