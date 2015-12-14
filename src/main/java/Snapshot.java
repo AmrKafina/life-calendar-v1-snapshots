@@ -60,7 +60,7 @@ public class Snapshot extends HttpServlet {
         Image yearCircleBlue = ImageIO.read(inputStream);
 
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_green.png");
-        Image yearCircleGreen = I mageIO.read(inputStream);
+        Image yearCircleGreen = ImageIO.read(inputStream);
 
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
         Image yearCircleGrey = ImageIO.read(inputStream);
