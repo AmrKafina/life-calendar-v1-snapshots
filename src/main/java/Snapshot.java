@@ -93,8 +93,8 @@ public class Snapshot extends HttpServlet {
             if (i % 10 == 0) // starts a new row every 10 circles
                 rowNumber++;
             
-            ig2.drawImage(yearCircleBlue, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * size + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
-                          (topPadding + rowNumber * size + 2 * margin + circleSize), 0, 0, circleSize, circleSize, null);
+            ig2.drawImage(yearCircleBlue, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
+                          (topPadding + rowNumber * circleSize + 2 * margin + circleSize), 0, 0, circleSize, circleSize, null);
 
         }
         
