@@ -92,7 +92,7 @@ public class Snapshot extends HttpServlet {
             if (i == 10) { // starts a new row every 10 circles
                 rowNumber++;
                 i = 0;
-                if (rowNumber == 11)
+                if (rowNumber == 10)
                     break;
             }
             
