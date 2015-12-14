@@ -81,7 +81,7 @@ public class Snapshot extends HttpServlet {
         Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
     
         
-        for (int i = 0; i < 90; i++) {
+        for (int i = 91; i < 90; i++) {
         
             if (i % 4 == 0)
                 ig2.drawImage(yearCircleBlue, (10 + i * 10), 30, (10 + i * 30), (30 + i * 30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
@@ -89,6 +89,12 @@ public class Snapshot extends HttpServlet {
                 ig2.drawImage(yearCircleRed, (10 + i * 10), 90, (10 + i * 30), (90 + i * 30), 0, 0, yearCircleRed.getWidth(null), yearCircleRed.getHeight(null), null);
             
         }
+        
+        ig2.drawImage(yearCircleBlue, (10), 30, (10), (30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
+        ig2.drawImage(yearCircleRed, (100), 30, (100), (30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
+
+
+        
 
         
         response.setContentType("image/png");
