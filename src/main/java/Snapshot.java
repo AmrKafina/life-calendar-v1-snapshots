@@ -101,6 +101,8 @@ public class Snapshot extends HttpServlet {
 
         }
         
+        ig2.setBackground(Color.white);
+        
         response.setContentType("image/png");
         
        // String pathToWeb = getServletContext().getRealPath(File.separator);
