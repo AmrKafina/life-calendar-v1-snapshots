@@ -45,7 +45,7 @@ public class Snapshot extends HttpServlet {
         
         
         
-        int width = 1024, height = 1024;
+        int width = 2048, height = 2048;
         
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
         // into integer pixels
@@ -80,11 +80,11 @@ public class Snapshot extends HttpServlet {
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
         Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
     
-        int margin = 5;
-        int rowPadding = 147;
-        int topPadding = 179;
-        int bottomPadding = 178;
-        int circleSize = 65;
+        int margin = 10;
+        int rowPadding = 294;
+        int topPadding = 357;
+        int bottomPadding = 357;
+        int circleSize = 130;
         int rowNumber = 0;
         
         for (int i = 0; rowNumber < 10; i++) {
