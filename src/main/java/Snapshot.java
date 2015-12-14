@@ -45,7 +45,7 @@ public class Snapshot extends HttpServlet {
         
         
         
-        int width = 2000, height = 2000;
+        int width = 1024, height = 1024;
         
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
         // into integer pixels
@@ -81,21 +81,22 @@ public class Snapshot extends HttpServlet {
         Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
     
         
-        for (int i = 91; i < 90; i++) {
+        int margin = 5;
+        int rowPadding = 147;
+        int topPadding = 179;
+        int bottomPadding = 178;
+        int circleSize = 63;
+        int rowNumber = -1;
         
-            if (i % 4 == 0)
-                ig2.drawImage(yearCircleBlue, (10 + i * 10), 30, (10 + i * 30), (30 + i * 30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
-            else if (i % 4 == 2)
-                ig2.drawImage(yearCircleRed, (10 + i * 10), 90, (10 + i * 30), (90 + i * 30), 0, 0, yearCircleRed.getWidth(null), yearCircleRed.getHeight(null), null);
+        for (int i = 0; i < 90; i++) {
+        
+            if (i % 10 == 0) // starts a new row every 10 circles
+                rowNumber++;
             
+            ig2.drawImage(yearCircleBlue, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * size + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
+                          (topPadding + rowNumber * size + 2 * margin + circleSize), 0, 0, circleSize, circleSize, null);
+
         }
-        
-        ig2.drawImage(yearCircleBlue, (10), 30, (94), (114), 0, 0, 84, 84, null);
-        ig2.drawImage(yearCircleRed, (100), 30, (184), (114), 0, 0, 84, 84, null);
-
-
-        
-
         
         response.setContentType("image/png");
         
