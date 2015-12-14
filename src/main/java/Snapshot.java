@@ -52,6 +52,7 @@ public class Snapshot extends HttpServlet {
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D ig2 = bi.createGraphics();
         ig2.setBackground(Color.RED);
+        ig2.fillRect(0, 0, width, height);
         
         // loads the images from memory
         InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
@@ -83,8 +84,7 @@ public class Snapshot extends HttpServlet {
     
         int margin = 20;
         int rowPadding = 274;
-        int topPadding = 357;
-        int bottomPadding = 357;
+        int topPadding = 349;
         int circleSize = 130;
         int rowNumber = 0;
         
