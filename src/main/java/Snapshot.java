@@ -84,8 +84,8 @@ public class Snapshot extends HttpServlet {
         int rowPadding = 147;
         int topPadding = 179;
         int bottomPadding = 178;
-        int circleSize = 63;
-        int rowNumber = 0;
+        int circleSize = 65;
+        int rowNumber = 1;
         
         for (int i = 0; rowNumber < 10; i++) {
         
