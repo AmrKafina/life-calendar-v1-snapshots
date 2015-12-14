@@ -80,18 +80,19 @@ public class Snapshot extends HttpServlet {
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
         Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
     
-        
         int margin = 5;
         int rowPadding = 147;
         int topPadding = 179;
         int bottomPadding = 178;
         int circleSize = 63;
-        int rowNumber = -1;
+        int rowNumber = 0;
         
         for (int i = 0; rowNumber < 10; i++) {
         
-            if (i == 10) // starts a new row every 10 circles
+            if (i == 10) { // starts a new row every 10 circles
                 rowNumber++;
+                i = 0;
+            }
             
             ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
                           (topPadding + rowNumber * circleSize + 2 * margin + circleSize), 0, 0, circleSize, circleSize, null);
