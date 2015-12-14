@@ -88,9 +88,9 @@ public class Snapshot extends HttpServlet {
         int circleSize = 63;
         int rowNumber = -1;
         
-        for (int i = 0; i < 90; i++) {
+        for (int i = 0; rowNumber < 10; i++) {
         
-            if (i % 10 == 0) // starts a new row every 10 circles
+            if (i == 10) // starts a new row every 10 circles
                 rowNumber++;
             
             ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
