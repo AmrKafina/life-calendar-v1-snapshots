@@ -90,12 +90,12 @@ public class Snapshot extends HttpServlet {
         int circleSize = 130;
         int rowNumber = 0;
         
-        for (int i = 0; rowNumber < 10; i++) {
+        for (int i = 0; rowNumber < 9; i++) {
         
             if (i == 10) { // starts a new row every 10 circles
                 rowNumber++;
                 i = 0;
-                if (rowNumber == 10)
+                if (rowNumber == 9)
                     break;
             }
             
