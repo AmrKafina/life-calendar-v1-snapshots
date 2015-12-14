@@ -94,8 +94,8 @@ public class Snapshot extends HttpServlet {
                 i = 0;
             }
             
-            ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
-                          (topPadding + rowNumber * circleSize + 2 * margin + circleSize), 0, 0, circleSize, circleSize, null);
+            ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin + circleSize),
+                          (topPadding + rowNumber * circleSize + margin + circleSize), 0, 0, circleSize, circleSize, null);
 
         }
         
