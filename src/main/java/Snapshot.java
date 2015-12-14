@@ -90,8 +90,8 @@ public class Snapshot extends HttpServlet {
             
         }
         
-        ig2.drawImage(yearCircleBlue, (10), 30, (10), (30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
-        ig2.drawImage(yearCircleRed, (100), 30, (100), (30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
+        ig2.drawImage(yearCircleBlue, (10), 30, (10), (30), 0, 0, 84, 84, null);
+        ig2.drawImage(yearCircleRed, (100), 30, (100), (30), 0, 0, 84, 84, null);
 
 
         
