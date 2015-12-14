@@ -84,9 +84,9 @@ public class Snapshot extends HttpServlet {
         for (int i = 0; i < 90; i++) {
         
             if (i % 4 == 0)
-                ig2.drawImage(yearCircleBlue, (10 + i * 10), 30, (10 + i * 30), (30 + i * 30), 0, 0, yearCircleBlue.getWidth(), yearCircleBlue.getHeight(), null);
+                ig2.drawImage(yearCircleBlue, (10 + i * 10), 30, (10 + i * 30), (30 + i * 30), 0, 0, yearCircleBlue.getWidth(null), yearCircleBlue.getHeight(null), null);
             else if (i % 4 == 2)
-                ig2.drawImage(yearCircleRed, (10 + i * 10), 90, (10 + i * 30), (90 + i * 30), 0, 0, yearCircleRed.getWidth(), yearCircleRed.getHeight(), null);
+                ig2.drawImage(yearCircleRed, (10 + i * 10), 90, (10 + i * 30), (90 + i * 30), 0, 0, yearCircleRed.getWidth(null), yearCircleRed.getHeight(null), null);
             
         }
 
