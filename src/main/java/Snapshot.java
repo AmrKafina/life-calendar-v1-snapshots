@@ -51,7 +51,9 @@ public class Snapshot extends HttpServlet {
         // into integer pixels
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D ig2 = bi.createGraphics();
-        ig2.setBackground(Color.RED);
+        
+        Color backgroundColor = new Color(232,219,197);
+        ig2.setBackground(backgroundColor);
         ig2.fillRect(0, 0, width, height);
         
         // loads the images from memory
