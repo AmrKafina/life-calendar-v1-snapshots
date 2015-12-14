@@ -101,7 +101,7 @@ public class Snapshot extends HttpServlet {
 
         }
         
-        ig2.setBackground(Color.white);
+        ig2.setBackground(Color.WHITE);
         
         response.setContentType("image/png");
         
