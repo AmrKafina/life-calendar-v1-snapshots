@@ -60,7 +60,7 @@ public class Snapshot extends HttpServlet {
         Image yearCircleBlue = ImageIO.read(inputStream);
 
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_green.png");
-        Image yearCircleGreen = ImageIO.read(inputStream);
+        Image yearCircleGreen = I mageIO.read(inputStream);
 
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
         Image yearCircleGrey = ImageIO.read(inputStream);
@@ -93,7 +93,7 @@ public class Snapshot extends HttpServlet {
             if (i % 10 == 0) // starts a new row every 10 circles
                 rowNumber++;
             
-            ig2.drawImage(yearCircleBlue, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
+            ig2.drawImage(yearCircleBlack, (rowPadding + i * circleSize + margin), (topPadding + rowNumber * circleSize + margin), (rowPadding + i * circleSize + margin * 2 + circleSize),
                           (topPadding + rowNumber * circleSize + 2 * margin + circleSize), 0, 0, circleSize, circleSize, null);
 
         }
