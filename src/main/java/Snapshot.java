@@ -53,7 +53,7 @@ public class Snapshot extends HttpServlet {
         Graphics2D ig2 = bi.createGraphics();
         
         Color backgroundColor = new Color(232,219,197);
-        ig2.setBackground(backgroundColor);
+        ig2.setColor(backgroundColor);
         ig2.fillRect(0, 0, width, height);
         
         // loads the images from memory
