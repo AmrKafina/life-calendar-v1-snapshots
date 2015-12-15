@@ -63,7 +63,7 @@ public class Snapshot extends HttpServlet {
         
         for ( int i = 0; i < fonts.length; i++ )
         {
-            out.println(fonts[i]);
+            out.print(fonts[i]);
         }
         out.close();
     }
