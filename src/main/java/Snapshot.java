@@ -134,6 +134,28 @@ public class Snapshot extends HttpServlet {
         ig2.setColor(Color.WHITE);
         ig2.fillRect(0, 0, width, height);
         
+            
+            try {
+                
+                InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
+
+                //create the font to use.
+                Font customFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+                Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
+                
+                //GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                //register the font
+                //ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")));
+
+                
+            } catch (IOException|FontFormatException e) {
+                //Handle exception
+            }
+            
+            
+            ig2.setColor(Color.BLACK);
+            ig2.drawString(snapshotTitle, 20, 20);
+
         // loads the images from memory
         InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
         Image yearCircleBlack = ImageIO.read(inputStream);
