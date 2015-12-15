@@ -140,7 +140,7 @@ public class Snapshot extends HttpServlet {
 
                 //create the font to use.
                 Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
-               Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
+             //  Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
                 
           //      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 //register the font
