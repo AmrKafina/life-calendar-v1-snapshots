@@ -74,6 +74,7 @@ public class Snapshot extends HttpServlet {
 
         try {
         InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
+            Font customFont = Font.createFont(Font.PLAIN, fontStream);
         }
         catch (Exception e) {
             out.println(e.getMessage());
@@ -144,7 +145,7 @@ public class Snapshot extends HttpServlet {
                 InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
 
                 //create the font to use.
-           // Font customFont = Font.createFont(Font.PLAIN, fontStream);
+            Font customFont = Font.createFont(Font.PLAIN, fontStream);
            // Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
                 
           //      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
