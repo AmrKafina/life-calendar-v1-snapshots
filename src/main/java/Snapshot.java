@@ -140,10 +140,10 @@ public class Snapshot extends HttpServlet {
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
             String snapshotTitle = snapshotRequest.get(0).toString();
-            int snapshotType = (int)snapshotRequest.get(1);
+            int snapshotType = snapshotRequest.get(1);
             int[] yearColors = (int[])snapshotRequest.get(2);
             
-            String reply = "Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType.toString() + ".";
+            String reply = "Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".";
             writer.write(reply);
             writer.flush();
             writer.close();
