@@ -105,7 +105,8 @@ public class Snapshot extends HttpServlet {
        //     writer.flush();
        //     writer.close();
             
-        } catch (IOException e) {
+        }
+        catch (Exception e) {
             
             try{
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -113,20 +114,16 @@ public class Snapshot extends HttpServlet {
                 response.getWriter().close();
             } catch (IOException ioe) {
             }
-        }
-        catch (Exception e) {
-            
+   
         }
     }
     
-    public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) {
+    public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) throws IOException, FontFormatException {
 
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
         // into integer pixels
         int width = 2048, height = 2048;
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        
-        try {
         
         Graphics2D ig2 = bi.createGraphics();
         
@@ -139,8 +136,8 @@ public class Snapshot extends HttpServlet {
                 InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
 
                 //create the font to use.
-              //  Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
-             //  Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+            Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
                 
           //      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 //register the font
@@ -233,10 +230,6 @@ public class Snapshot extends HttpServlet {
             
             ig2.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
                           (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
-            
-        }
-        }
-        catch (Exception e) {
             
         }
 
