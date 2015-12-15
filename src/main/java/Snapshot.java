@@ -24,7 +24,6 @@ import javax.imageio.ImageIO;
 
 import java.io.PrintWriter;
 
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -144,9 +143,9 @@ public class Snapshot extends HttpServlet {
                 Font customFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
                 titleFont = customFont.deriveFont(Font.PLAIN, 24);
                 
-                //GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 //register the font
-                //ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")));
+                ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, inputStream));
             
             
             ig2.setColor(Color.BLACK);
