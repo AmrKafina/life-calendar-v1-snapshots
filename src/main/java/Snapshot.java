@@ -134,10 +134,11 @@ public class Snapshot extends HttpServlet {
         // Color backgroundColor = new Color(232,219,197);
         ig2.setColor(Color.WHITE);
         ig2.fillRect(0, 0, width, height);
+            InputStream inputStream;
         
          /*   Font titleFont;
             
-                InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
+                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
 
                 //create the font to use.
                 Font customFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
