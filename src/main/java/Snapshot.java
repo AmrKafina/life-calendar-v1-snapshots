@@ -102,6 +102,7 @@ public class Snapshot extends HttpServlet {
     
     public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) {
         
+        try {
         int width = 2048, height = 2048;
         
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
@@ -194,6 +195,10 @@ public class Snapshot extends HttpServlet {
             
             ig2.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
                           (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
+            
+        }
+        }
+        catch (Exception e) {
             
         }
 
