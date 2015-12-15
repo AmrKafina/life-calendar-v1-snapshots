@@ -137,8 +137,7 @@ public class Snapshot extends HttpServlet {
         ig2.fillRect(0, 0, width, height);
         
             Font titleFont;
-            try {
-                
+            
                 InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
 
                 //create the font to use.
@@ -148,13 +147,6 @@ public class Snapshot extends HttpServlet {
                 //GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 //register the font
                 //ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")));
-
-                
-            } catch (IOException e) {
-            }
-            catch(FontFormatException e)
-            {
-            }
             
             
             ig2.setColor(Color.BLACK);
