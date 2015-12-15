@@ -148,8 +148,10 @@ public class Snapshot extends HttpServlet {
                 //ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")));
 
                 
-            } catch (IOException|FontFormatException e) {
-                //Handle exception
+            } catch (IOException e) {
+            }
+            catch(FontFormatException e)
+            {
             }
             
             
