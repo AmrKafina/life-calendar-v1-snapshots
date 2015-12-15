@@ -193,9 +193,7 @@ public class Snapshot extends HttpServlet {
                 default:
                     imageToUse = yearCircleBordered;
             }
-            
-            imageToUse = yearCircleBordered;
-            
+                        
             ig2.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
                           (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
             
