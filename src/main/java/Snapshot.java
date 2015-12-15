@@ -67,7 +67,7 @@ public class Snapshot extends HttpServlet {
         {
             out.println(fonts[i]);
         }
-        out.close();
+       // out.close();
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
