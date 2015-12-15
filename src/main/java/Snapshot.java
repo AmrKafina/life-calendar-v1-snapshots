@@ -135,7 +135,7 @@ public class Snapshot extends HttpServlet {
         ig2.setColor(Color.WHITE);
         ig2.fillRect(0, 0, width, height);
         
-            Font titleFont;
+         /*   Font titleFont;
             
                 InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
 
@@ -150,7 +150,7 @@ public class Snapshot extends HttpServlet {
             
             ig2.setColor(Color.BLACK);
             ig2.setFont(titleFont);
-            ig2.drawString(snapshotTitle, 20, 20);
+            ig2.drawString(snapshotTitle, 20, 20); */
 
         // loads the images from memory
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
