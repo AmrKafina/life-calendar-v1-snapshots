@@ -45,69 +45,6 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
-        
-        int width = 2048, height = 2048;
-        
-        // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
-        // into integer pixels
-        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D ig2 = bi.createGraphics();
-        
-        // sets the color to white, and then paints the whole rectangle/canvas
-       // Color backgroundColor = new Color(232,219,197);
-        ig2.setColor(Color.WHITE);
-        ig2.fillRect(0, 0, width, height);
-        
-        // loads the images from memory
-        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
-          Image yearCircleBlack = ImageIO.read(inputStream);
-        
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_blue.png");
-        Image yearCircleBlue = ImageIO.read(inputStream);
-
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_green.png");
-        Image yearCircleGreen = ImageIO.read(inputStream);
-
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
-        Image yearCircleGrey = ImageIO.read(inputStream);
-
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_pink.png");
-        Image yearCirclePink = ImageIO.read(inputStream);
-
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_purple.png");
-        Image yearCirclePurple = ImageIO.read(inputStream);
-
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_red.png");
-        Image yearCircleRed = ImageIO.read(inputStream);
-        
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_yellow.png");
-        Image yearCircleYellow = ImageIO.read(inputStream);
-
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
-        Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
-    
-        int margin = 20;
-        int rowPadding = 274;
-        int topPadding = 349;
-        int circleSize = 130;
-        int rowNumber = 0;
-        
-        for (int i = 0; rowNumber < 9; i++) {
-        
-            if (i == 10) { // starts a new row every 10 circles
-                rowNumber++;
-                i = 0;
-                if (rowNumber == 9)
-                    break;
-            }
-            
-            ig2.drawImage(yearCircleBlack, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
-                          (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
-
-        }
-        
-        
         response.setContentType("image/png");
         
        // String pathToWeb = getServletContext().getRealPath(File.separator);
@@ -119,7 +56,6 @@ public class Snapshot extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
         
         try {
             // constructs the data from the "request" and stores it in "input"
@@ -139,15 +75,16 @@ public class Snapshot extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
-            String snapshotTitle = snapshotRequest.get(0).toString();
-            int snapshotType = (Integer)snapshotRequest.get(1);
-            int[] yearColors = (int[])snapshotRequest.get(2);
+            BufferedImage generatedSnapshot = generateSnapshot(snapshotRequest.get(0).toString(), (Integer)snapshotRequest.get(1), (int[])snapshotRequest.get(2));
             
-            String reply = "Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".";
-            writer.write(reply);
-            writer.flush();
-            writer.close();
+            OutputStream out = response.getOutputStream();
+            ImageIO.write(generatedSnapshot, "png", out);
+            out.close();
             
+       //     String reply = "Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".";
+       //     writer.write(reply);
+       //     writer.flush();
+       //     writer.close();
             
         } catch (IOException e) {
             
@@ -163,6 +100,105 @@ public class Snapshot extends HttpServlet {
         }
     }
     
+    public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) {
+        
+        int width = 2048, height = 2048;
+        
+        // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
+        // into integer pixels
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D ig2 = bi.createGraphics();
+        
+        // sets the color to white, and then paints the whole rectangle/canvas
+        // Color backgroundColor = new Color(232,219,197);
+        ig2.setColor(Color.WHITE);
+        ig2.fillRect(0, 0, width, height);
+        
+        // loads the images from memory
+        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
+        Image yearCircleBlack = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_blue.png");
+        Image yearCircleBlue = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_green.png");
+        Image yearCircleGreen = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
+        Image yearCircleGrey = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_pink.png");
+        Image yearCirclePink = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_purple.png");
+        Image yearCirclePurple = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_red.png");
+        Image yearCircleRed = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_yellow.png");
+        Image yearCircleYellow = ImageIO.read(inputStream);
+        
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
+        Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
+        
+        int margin = 20;
+        int rowPadding = 274;
+        int topPadding = 349;
+        int circleSize = 130;
+        int rowNumber = 0;
+        
+        for (int i = 0; rowNumber < 9; i++) {
+            
+            if (i == 10) { // starts a new row every 10 circles
+                rowNumber++;
+                i = 0;
+                if (rowNumber == 9)
+                    break;
+            }
+            
+            Image imageToUse;
+            
+            switch (data[i * rowNumber]) {
+                    
+                case 1:
+                    imageToUse = yearCircleGreen;
+                    break;
+                case 2:
+                    imageToUse = yearCircleBlue;
+                    break;
+                case 3:
+                    imageToUse = yearCircleRed;
+                    break;
+                case 4:
+                    imageToUse = yearCirclePurple;
+                    break;
+                case 5:
+                    imageToUse = yearCircleBordered;
+                    break;
+                case 6:
+                    imageToUse = yearCircleGrey;
+                    break;
+                case 7:
+                    imageToUse = yearCircleYellow;
+                    break;
+                case 8:
+                    imageToUse = yearCirclePink;
+                    break;
+                case 9:
+                    imageToUse = yearCircleBlack;
+                    break;
+                default:
+                    imageToUse = yearCircleBordered;
+            }
+            
+            ig2.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
+                          (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
+            
+        }
 
+        return bi;
+    }
+    
     
 }
