@@ -71,6 +71,14 @@ public class Snapshot extends HttpServlet {
         {
             out.println(fonts[i]);
         }
+
+        try {
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
+        }
+        catch (Exception e) {
+            out.println(e.getMessage());
+        }
+
        // out.close();
     }
     
