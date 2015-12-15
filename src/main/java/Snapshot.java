@@ -50,9 +50,9 @@ public class Snapshot extends HttpServlet {
        // String pathToWeb = getServletContext().getRealPath(File.separator);
        // File f = new File(pathToWeb + "sync_problem.png");
       //  BufferedImage bi = ImageIO.read(inputStream);
-        OutputStream out = response.getOutputStream();
-        ImageIO.write(bi, "png", out);
-        out.close();
+      //  OutputStream out = response.getOutputStream();
+      //  ImageIO.write(bi, "png", out);
+      //  out.close();
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
