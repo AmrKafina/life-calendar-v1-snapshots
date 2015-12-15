@@ -147,11 +147,13 @@ public class Snapshot extends HttpServlet {
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 //register the font
                 ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, inputStream));
-            
+            */
             
             ig2.setColor(Color.BLACK);
-            ig2.setFont(titleFont);
-            ig2.drawString(snapshotTitle, 20, 20); */
+          //  ig2.setFont(titleFont);
+            ig2.setFont(new Font("TimesRoman", Font.PLAIN, 48));
+
+            ig2.drawString(snapshotTitle, 20, 20);
 
         // loads the images from memory
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
