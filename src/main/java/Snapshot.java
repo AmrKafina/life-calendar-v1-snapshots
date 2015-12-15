@@ -33,6 +33,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import java.awt.GraphicsEnvironment;
+
+
 
 @WebServlet(name = "snapshot",urlPatterns = {"/snapshot/*"})
 public class Snapshot extends HttpServlet {
@@ -45,7 +48,7 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        response.setContentType("image/png");
+       // response.setContentType("image/png");
         
        // String pathToWeb = getServletContext().getRealPath(File.separator);
        // File f = new File(pathToWeb + "sync_problem.png");
@@ -53,6 +56,16 @@ public class Snapshot extends HttpServlet {
       //  OutputStream out = response.getOutputStream();
       //  ImageIO.write(bi, "png", out);
       //  out.close();
+        
+        
+        String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+        OutputStream out = response.getOutputStream();
+        
+        for ( int i = 0; i < fonts.length; i++ )
+        {
+            out.write(fonts[i]);
+        }
+        out.close();
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -193,7 +206,7 @@ public class Snapshot extends HttpServlet {
                 default:
                     imageToUse = yearCircleBordered;
             }
-                        
+            
             ig2.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
                           (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
             
