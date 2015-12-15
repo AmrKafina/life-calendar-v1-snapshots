@@ -139,7 +139,7 @@ public class Snapshot extends HttpServlet {
                 InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
 
                 //create the font to use.
-                Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+              //  Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
              //  Font titleFont = customFont.deriveFont(Font.PLAIN, 24);
                 
           //      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
