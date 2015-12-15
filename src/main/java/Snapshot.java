@@ -73,7 +73,7 @@ public class Snapshot extends HttpServlet {
         }
 
         try {
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
             Font customFont = Font.createFont(Font.PLAIN, fontStream);
         }
         catch (Exception e) {
@@ -142,7 +142,7 @@ public class Snapshot extends HttpServlet {
         ig2.fillRect(0, 0, width, height);
         
             
-                InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chalkboard.ttf");
+                InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
 
                 //create the font to use.
             Font customFont = Font.createFont(Font.PLAIN, fontStream);
