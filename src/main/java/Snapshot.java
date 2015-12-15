@@ -154,7 +154,7 @@ public class Snapshot extends HttpServlet {
             ig2.drawString(snapshotTitle, 20, 20);
 
         // loads the images from memory
-        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
         Image yearCircleBlack = ImageIO.read(inputStream);
         
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_blue.png");
