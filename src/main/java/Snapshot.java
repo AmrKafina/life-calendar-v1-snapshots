@@ -52,6 +52,7 @@ public class Snapshot extends HttpServlet {
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D ig2 = bi.createGraphics();
         
+        // sets the color to white, and then paints the whole rectangle/canvas
        // Color backgroundColor = new Color(232,219,197);
         ig2.setColor(Color.WHITE);
         ig2.fillRect(0, 0, width, height);
@@ -117,7 +118,9 @@ public class Snapshot extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        
         try {
+            // constructs the data from the "request" and stores it in "input"
             int length = request.getContentLength();
             byte[] input = new byte[length];
             ServletInputStream sin = request.getInputStream();
@@ -129,16 +132,16 @@ public class Snapshot extends HttpServlet {
             
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
             ObjectInputStream ois = new ObjectInputStream(bis);
-            int[] sentData = (int[])ois.readObject();
+            ArrayList<Object> snapshotRequest = (ArrayList<Object>) ois.readObject();
             
             response.setStatus(HttpServletResponse.SC_OK);
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
-            String dataToNumbers = "Year colors: ";
-            for (int i = 0; i < sentData.length; i++)
-                dataToNumbers += "" + sentData[i];
+            String snapshotTitle = snapshotRequest.get(0).toString();
+            int snapshotType = (int)snapshotRequest.get(1);
+            int[] yearColors = (int[])snapshotRequest.get(2);
             
-            writer.write(dataToNumbers);
+            writer.write("Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".");
             writer.flush();
             writer.close();
             
