@@ -137,7 +137,7 @@ public class Snapshot extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
-            String snapshotTitle = snapshotRequest.get(0).toString();
+            String snapshotTitle = snapshotRequest.get(0);
             int snapshotType = (int)snapshotRequest.get(1);
             int[] yearColors = (int[])snapshotRequest.get(2);
             
