@@ -48,6 +48,8 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        PrintWriter out = response.getWriter();
+
        // response.setContentType("image/png");
         
        // String pathToWeb = getServletContext().getRealPath(File.separator);
@@ -59,11 +61,11 @@ public class Snapshot extends HttpServlet {
         
         
         String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        OutputStream out = response.getOutputStream();
+      //  OutputStream out = response.getOutputStream();
         
         for ( int i = 0; i < fonts.length; i++ )
         {
-            out.print(fonts[i]);
+            out.println(fonts[i]);
         }
         out.close();
     }
