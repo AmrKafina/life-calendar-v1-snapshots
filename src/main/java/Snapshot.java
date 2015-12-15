@@ -143,7 +143,8 @@ public class Snapshot extends HttpServlet {
             int snapshotType = (int)snapshotRequest.get(1);
             int[] yearColors = (int[])snapshotRequest.get(2);
             
-            writer.write("Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".");
+            String reply = "Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".";
+            writer.write(reply);
             writer.flush();
             writer.close();
             
