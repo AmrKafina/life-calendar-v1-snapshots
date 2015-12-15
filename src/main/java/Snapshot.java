@@ -101,13 +101,15 @@ public class Snapshot extends HttpServlet {
     }
     
     public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) {
+
+        BufferedImage bi;
         
         try {
         int width = 2048, height = 2048;
         
         // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
         // into integer pixels
-        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D ig2 = bi.createGraphics();
         
         // sets the color to white, and then paints the whole rectangle/canvas
