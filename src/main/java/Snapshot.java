@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.awt.Image;
 
+import java.util.ArrayList;
+
 import java.io.File;
 import java.io.OutputStream;
 import java.io.InputStream;
@@ -137,7 +139,7 @@ public class Snapshot extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
-            String snapshotTitle = snapshotRequest.get(0);
+            String snapshotTitle = snapshotRequest.get(0).toString();
             int snapshotType = (int)snapshotRequest.get(1);
             int[] yearColors = (int[])snapshotRequest.get(2);
             
