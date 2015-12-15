@@ -144,10 +144,10 @@ public class Snapshot extends HttpServlet {
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
         Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
         
-        int margin = 20;
+        int margin = 30;
         int rowPadding = 274;
         int topPadding = 349;
-        int circleSize = 130;
+        int circleSize = 120;
         int rowNumber = 0;
         
         for (int i = 0; rowNumber < 9; i++) {
@@ -193,6 +193,8 @@ public class Snapshot extends HttpServlet {
                 default:
                     imageToUse = yearCircleBordered;
             }
+            
+            imageToUse = yearCircleBordered;
             
             ig2.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
                           (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
