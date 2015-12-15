@@ -161,7 +161,7 @@ public class Snapshot extends HttpServlet {
             
             Image imageToUse;
             
-            switch (data[i * rowNumber]) {
+            switch (data[i + rowNumber * 10]) {
                     
                 case 1:
                     imageToUse = yearCircleGreen;
