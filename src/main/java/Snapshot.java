@@ -155,7 +155,7 @@ public class Snapshot extends HttpServlet {
             ig2.setFont(titleFont);
           //  ig2.setFont(new Font("TimesRoman", Font.PLAIN, 72));
 
-        FontMetrics fm = getFontMetrics(titleFont);
+        FontMetrics fm = ig2.getFontMetrics(titleFont);
         int titleWidth = fm.stringWidth(snapshotTitle);
         
         ig2.drawString(snapshotTitle, width - (titleWidth / 2), 200);
