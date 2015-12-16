@@ -138,9 +138,14 @@ public class Snapshot extends HttpServlet {
         // Color backgroundColor = new Color(232,219,197);
         ig2.setColor(Color.WHITE);
         ig2.fillRect(0, 0, width, height);
+
+        // loads the Year Snapshot image and uses it as a template to construct the rest of the snapshot
+        InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot.png");
+        Image yearSnapshotTemplate = ImageIO.read(inputStream);
         
-            
-                InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
+        ig2.drawImage(yearSnapshotTemplate, 0, 0, null);
+        
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
 
                 //create the font to use.
             Font customFont = Font.createFont(Font.PLAIN, fontStream);
@@ -169,7 +174,7 @@ public class Snapshot extends HttpServlet {
         ig2.drawString("Life Calendar", (width - markWidth - 50), height - 48 - 50);
 
         // loads the images from memory
-            InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
         Image yearCircleBlack = ImageIO.read(inputStream);
         
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_blue.png");
