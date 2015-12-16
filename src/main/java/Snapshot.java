@@ -324,7 +324,7 @@ public class Snapshot extends HttpServlet {
                 
                 Image imageToUse;
                 
-                if (rowNumber == 4 && i == 3) { // loads and draws the day box, and then exits the loop
+                if (rowNumber == 5 && i == 2) { // loads and draws the day box, and then exits the loop
                     switch (data[52]) {
                         case 1:
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green.png");
