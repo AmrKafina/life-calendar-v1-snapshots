@@ -93,35 +93,33 @@ public class Snapshot extends HttpServlet {
                 count +=c;
             }
             sin.close();
-            //
+            
+            // reads the data from input and puts it in "snapshotRequest"
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
             ObjectInputStream ois = new ObjectInputStream(bis);
             ArrayList<Object> snapshotRequest = (ArrayList<Object>) ois.readObject();
             
+            // sets the status of the response to "ok"
             response.setStatus(HttpServletResponse.SC_OK);
-            OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
             
+            // generates the snapshot
             BufferedImage generatedSnapshot = generateSnapshot(snapshotRequest.get(0).toString(), (Integer)snapshotRequest.get(1), (int[])snapshotRequest.get(2));
             
+            // sends the data back to the client
             OutputStream out = response.getOutputStream();
             ImageIO.write(generatedSnapshot, "png", out);
             out.close();
             
-       //     String reply = "Request recieved! Title will be " + snapshotTitle + ". The snapshot will be of type " + snapshotType + ".";
-       //     writer.write(reply);
-       //     writer.flush();
-       //     writer.close();
-            
         }
-        catch (Exception e) {
+        catch (Exception e) { // if something goes wrong, sets the status of the response to "bad request" and send back the error message
             
-            try{
+            try {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 response.getWriter().print(e.getMessage());
                 response.getWriter().close();
-            } catch (IOException ioe) {
             }
-   
+            catch (IOException ioe) {
+            }
         }
     }
     
