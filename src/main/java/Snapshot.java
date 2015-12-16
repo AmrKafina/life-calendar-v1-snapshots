@@ -39,8 +39,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 
 
-
-
 @WebServlet(name = "snapshot",urlPatterns = {"/snapshot/*"})
 public class Snapshot extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -157,7 +155,10 @@ public class Snapshot extends HttpServlet {
             ig2.setFont(titleFont);
           //  ig2.setFont(new Font("TimesRoman", Font.PLAIN, 72));
 
-            ig2.drawString(snapshotTitle, 200, 200);
+        FontMetrics fm = getFontMetrics(titleFont);
+        int titleWidth = fm.stringWidth(snapshotTitle);
+        
+        ig2.drawString(snapshotTitle, width - (titleWidth / 2), 200);
 
         // loads the images from memory
             InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
