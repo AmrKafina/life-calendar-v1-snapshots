@@ -160,7 +160,7 @@ public class Snapshot extends HttpServlet {
         
         ig2.drawString(snapshotTitle, (width - titleWidth) / 2, 200);
         
-        ig2.setFont(new Font("Serif", Font.PLAIN, 72));
+      //  ig2.setFont(new Font("Serif", Font.PLAIN, 72));
 
         fm = ig2.getFontMetrics(ig2.getFont());
         int markWidth = fm.stringWidth("Life Calendar");
