@@ -158,7 +158,7 @@ public class Snapshot extends HttpServlet {
         FontMetrics fm = ig2.getFontMetrics(titleFont);
         int titleWidth = fm.stringWidth(snapshotTitle);
         
-        ig2.drawString(snapshotTitle, width - (titleWidth / 2), 200);
+        ig2.drawString(snapshotTitle, (width - titleWidth) / 2, 200);
 
         // loads the images from memory
             InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
