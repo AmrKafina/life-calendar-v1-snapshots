@@ -153,12 +153,20 @@ public class Snapshot extends HttpServlet {
             
             ig2.setColor(Color.BLACK);
             ig2.setFont(titleFont);
-          //  ig2.setFont(new Font("TimesRoman", Font.PLAIN, 72));
 
         FontMetrics fm = ig2.getFontMetrics(titleFont);
         int titleWidth = fm.stringWidth(snapshotTitle);
+        int titleHeight = fm.stringHeight(snapshotTitle);
         
         ig2.drawString(snapshotTitle, (width - titleWidth) / 2, 200);
+        
+        ig2.setFont(new Font("Utopia", Font.PLAIN, 72));
+
+        fm = ig2.getFontMetrics(ig2.getFont());
+        int markWidth = fm.stringWidth("Life Calendar");
+        int markHeight = fm.stringHeight("Life Calendar");
+        
+        ig2.drawString("Life Calendar", (width - markWidth - 50), height - markHeight - 50);
 
         // loads the images from memory
             InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
@@ -190,7 +198,7 @@ public class Snapshot extends HttpServlet {
         
         int margin = 30;
         int rowPadding = 274;
-        int topPadding = 349;
+        int topPadding = 349 + titleHeight;
         int circleSize = 120;
         int rowNumber = 0;
         
