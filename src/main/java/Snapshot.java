@@ -136,7 +136,7 @@ public class Snapshot extends HttpServlet {
         // creates the font used for the title
         InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
-        Font titleFont = customFont.deriveFont(Font.PLAIN, 112);
+        Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
         
         // Color backgroundColor = new Color(232,219,197);
 
