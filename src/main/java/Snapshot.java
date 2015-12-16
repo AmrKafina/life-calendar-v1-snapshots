@@ -174,9 +174,9 @@ public class Snapshot extends HttpServlet {
         graphics.setFont(titleFont);
 
         // draws the title, centered horizontally
-        FontMetrics fm = ig2.getFontMetrics(titleFont);
+        FontMetrics fm = graphics.getFontMetrics(titleFont);
         int titleWidth = fm.stringWidth(snapshotTitle);
-        ig2.drawString(snapshotTitle, (width - titleWidth) / 2, 200);
+        graphics.drawString(snapshotTitle, (snapshotWidth - titleWidth) / 2, 200);
 
         
         if (snapshotType == 0) { // if a yearsSnapshot
@@ -226,7 +226,7 @@ public class Snapshot extends HttpServlet {
                 
                 Image imageToUse;
                 
-                switch (data[i + rowNumber * 10]) {
+                switch (data[i + rowNumber * 10]) { // uses the appropriate image, according to the data
                         
                     case 1:
                         imageToUse = yearCircleGreen;
