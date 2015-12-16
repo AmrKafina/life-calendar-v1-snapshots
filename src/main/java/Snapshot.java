@@ -314,7 +314,7 @@ public class Snapshot extends HttpServlet {
             int boxSize = 120;
             int rowNumber = 0;
             
-            for (int i = 0; rowNumber < 5; i++) {
+            for (int i = 0; rowNumber <= 5; i++) {
                 
                 if (i == 10) { // starts a new row every 10 boxes
                     rowNumber++;
