@@ -93,7 +93,7 @@ public class Snapshot extends HttpServlet {
                 count +=c;
             }
             sin.close();
-            
+            //
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
             ObjectInputStream ois = new ObjectInputStream(bis);
             ArrayList<Object> snapshotRequest = (ArrayList<Object>) ois.readObject();
@@ -152,16 +152,30 @@ public class Snapshot extends HttpServlet {
             snapshotTemplate = ImageIO.read(inputStream);
             
         }
-        else if (snapshotType == 1) {
+        else if (snapshotType == 1) { // if a yearSnapshot
+            
+            snapshotWidth = snapshotHeight = 2048;
+            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
+            graphics = finalSnapshot.createGraphics();
+            
+            // loads the yearsSnapshot template
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot.png");
+            snapshotTemplate = ImageIO.read(inputStream);
+
             
         }
-        else if (snapshotType == 2) {
+        else { // a weeksSnapshot
+            
+            snapshotWidth = snapshotHeight = 2048;
+            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
+            graphics = finalSnapshot.createGraphics();
+            
+            // loads the yearsSnapshot template
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot.png");
+            snapshotTemplate = ImageIO.read(inputStream);
+
             
         }
-        else {
-            
-        }
-        
         // sets the background color to white
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, snapshotWidth, snapshotHeight);
@@ -265,13 +279,10 @@ public class Snapshot extends HttpServlet {
             }
             
         }
-        else if (snapshotType == 1) {
+        else if (snapshotType == 1) { // if a yearSnapshot
             
         }
-        else if (snapshotType == 2) {
-            
-        }
-        else { // should be unreachable
+        else { // a weeksSnapshot
             
         }
 
