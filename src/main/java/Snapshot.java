@@ -324,7 +324,7 @@ public class Snapshot extends HttpServlet {
                 Image imageToUse;
                 
                 if (rowNumber == 4 && i == 3) { // loads and draws the day box, and then exits the loop
-                    switch (data[i + rowNumber * 10]) {
+                    switch (data[53]) {
                         case 1:
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green.png");
                             break;
@@ -356,7 +356,6 @@ public class Snapshot extends HttpServlet {
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
                     }
 
-                    inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black.png");
                     imageToUse = ImageIO.read(inputStream);
                     
                     graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
