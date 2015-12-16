@@ -351,7 +351,7 @@ public class Snapshot extends HttpServlet {
                                 inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
                         }
                     
-                        imageToUse = ImageIO.read(inputStream);
+                        Image imageToUse = ImageIO.read(inputStream);
                         
                         graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
                         break;
