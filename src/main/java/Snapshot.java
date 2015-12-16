@@ -136,7 +136,8 @@ public class Snapshot extends HttpServlet {
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
         
-        // Color backgroundColor = new Color(232,219,197);
+        // this color is used for the title
+        Color blackColor = new Color(110,114,113);
 
         
         if (snapshotType == 0) { // if a yearsSnapshot
@@ -182,7 +183,7 @@ public class Snapshot extends HttpServlet {
         graphics.drawImage(snapshotTemplate, 0, 0, null);
         
         // sets the font for the title
-        graphics.setColor(Color.BLACK);
+        graphics.setColor(blackColor);
         graphics.setFont(titleFont);
 
         // draws the title, centered horizontally
