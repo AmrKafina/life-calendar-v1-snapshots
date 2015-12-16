@@ -304,7 +304,7 @@ public class Snapshot extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_yellow.png");
             Image weekBoxYellow = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_bordered.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_white.png");
             Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
             
             int margin = 30;
@@ -318,8 +318,44 @@ public class Snapshot extends HttpServlet {
                 if (i == 10) { // starts a new row every 10 boxes
                     rowNumber++;
                     i = 0;
-                    if (rowNumber == 4 && i == 3)
+                    if (rowNumber == 4 && i == 3) { // loads and draws the day box, and then exits the loop
+                        switch (data[i + rowNumber * 10]) {
+                            case 1:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green.png");
+                                break;
+                            case 2:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_blue.png");
+                                break;
+                            case 3:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_red.png");
+                                break;
+                            case 4:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple.png");
+                                break;
+                            case 5:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
+                                break;
+                            case 6:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey.png");
+                                break;
+                            case 7:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow.png");
+                                break;
+                            case 8:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_pink.png");
+                                break;
+                            case 9:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black.png");
+                                break;
+                            default:
+                                inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
+                        }
+                    
+                        imageToUse = ImageIO.read(inputStream);
+                        
+                        graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
                         break;
+                    }
                 }
                 
                 Image imageToUse;
