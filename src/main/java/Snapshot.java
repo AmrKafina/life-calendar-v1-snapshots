@@ -165,12 +165,13 @@ public class Snapshot extends HttpServlet {
         }
         else { // a weeksSnapshot
             
-            snapshotWidth = snapshotHeight = 2048;
+            snapshotWidth = 2048;
+            snapshotHeight = 2048;
             finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
             graphics = finalSnapshot.createGraphics();
             
             // loads the yearsSnapshot template
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot_Template.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Weeks_Snapshot_Template.png");
             snapshotTemplate = ImageIO.read(inputStream);
 
             
@@ -405,8 +406,160 @@ public class Snapshot extends HttpServlet {
         }
         else { // a weeksSnapshot
             
-        }
+            // loads the images from memory
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black.png");
+            Image weekBoxBlack = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_blue.png");
+            Image weekBoxBlue = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_green.png");
+            Image weekBoxGreen = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey.png");
+            Image weekBoxGrey = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_pink.png");
+            Image weekBoxPink = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple.png");
+            Image weekBoxPurple = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_red.png");
+            Image weekBoxRed = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_yellow.png");
+            Image weekBoxYellow = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_white.png");
+            Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
+            
+            
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black.png");
+            Image dayBoxBlack = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_blue.png");
+            Image dayBoxBlue = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green.png");
+            Image dayBoxGreen = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey.png");
+            Image dayBoxGrey = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_pink.png");
+            Image dayBoxPink = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple.png");
+            Image dayBoxPurple = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_red.png");
+            Image dayBoxRed = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow.png");
+            Image dayBoxYellow = ImageIO.read(inputStream);
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
+            Image dayBoxBordered = ImageIO.read(inputStream); // the blank/transparent day box
 
+            
+            // initializes some values
+            int margin = 30;
+            int rowPadding = 274;
+            int topPadding = 349 + 72;
+            int boxSize = 120;
+            int rowNumber = 0;
+            
+            // this is where the drawing begins
+            
+            for (int i = 0; rowNumber < 9; i++) {
+                
+                if (i == 53) { // starts a new row every 53 boxes
+                    rowNumber++;
+                    i = 0;
+                }
+                
+                Image imageToUse;
+                
+                if (i == 52) { // draws the day box (at the end of each row
+                    switch (data[52]) { // TODO data of rowNumber at element 52
+                        case 1:
+                            imageToUse = dayBoxGreen;
+                            break;
+                        case 2:
+                            imageToUse = dayBoxBlue;
+                            break;
+                        case 3:
+                            imageToUse = dayBoxRed;
+                            break;
+                        case 4:
+                            imageToUse = dayBoxPurple;
+                            break;
+                        case 5:
+                            imageToUse = dayBoxBordered;
+                            break;
+                        case 6:
+                            imageToUse = dayBoxGrey;
+                            break;
+                        case 7:
+                            imageToUse = dayBoxYellow;
+                            break;
+                        case 8:
+                            imageToUse = dayBoxPink;
+                            break;
+                        case 9:
+                            imageToUse = dayBoxBlack;
+                            break;
+                        default:
+                            imageToUse = dayBoxBordered;
+                    }
+                    
+                }
+                else { // otherwise, load the appropriate week box
+                    
+                    switch (data[i + rowNumber * 53]) { // TODO FIX THIS VALUE uses the appropriate image, according to the data
+                            
+                        case 1:
+                            imageToUse = weekBoxGreen;
+                            break;
+                        case 2:
+                            imageToUse = weekBoxBlue;
+                            break;
+                        case 3:
+                            imageToUse = weekBoxRed;
+                            break;
+                        case 4:
+                            imageToUse = weekBoxPurple;
+                            break;
+                        case 5:
+                            imageToUse = weekBoxBordered;
+                            break;
+                        case 6:
+                            imageToUse = weekBoxGrey;
+                            break;
+                        case 7:
+                            imageToUse = weekBoxYellow;
+                            break;
+                        case 8:
+                            imageToUse = weekBoxPink;
+                            break;
+                        case 9:
+                            imageToUse = weekBoxBlack;
+                            break;
+                        default:
+                            imageToUse = weekBoxBordered;
+                    }
+
+                }
+                
+                // now that the image is correctly loaded, we can finally draw it
+                graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
+                
+            }
+
+        }
         
         return finalSnapshot;
     }
