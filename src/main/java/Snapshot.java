@@ -57,9 +57,27 @@ public class Snapshot extends HttpServlet {
        // String pathToWeb = getServletContext().getRealPath(File.separator);
        // File f = new File(pathToWeb + "sync_problem.png");
       //  BufferedImage bi = ImageIO.read(inputStream);
-      //  OutputStream out = response.getOutputStream();
-      //  ImageIO.write(bi, "png", out);
-      //  out.close();
+        
+        int snapshotWidth, snapshotHeight;
+        BufferedImage finalSnapshot;
+        Graphics2D graphics;
+        InputStream inputStream;
+        Image snapshotTemplate;
+        
+        snapshotWidth = 4608;
+        snapshotHeight = 7373;
+        finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
+        graphics = finalSnapshot.createGraphics();
+        
+        // loads the yearsSnapshot template
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Weeks_Snapshot_Template.png");
+        snapshotTemplate = ImageIO.read(inputStream);
+        
+        graphics.drawImage(snapshotTemplate, 0, 0, null);
+        
+        OutputStream out = response.getOutputStream();
+        ImageIO.write(finalSnapshot, "png", out);
+        out.close();
         
         
         String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
@@ -173,7 +191,7 @@ public class Snapshot extends HttpServlet {
 
             graphics.drawImage(snapshotTemplate, 0, 0, null);
 
-            return finalSnapshot;            
+            return finalSnapshot;
 
             
         }
