@@ -492,7 +492,7 @@ public class Snapshot extends HttpServlet {
             
             // this is where the drawing begins
             
-            for (int i = 0; rowNumber < 90; i++) {
+            for (int i = 0; rowNumber < 89; i++) {
                 
                 if (i == 53) { // starts a new row every 53 boxes
                     rowNumber++;
@@ -534,7 +534,6 @@ public class Snapshot extends HttpServlet {
                             imageToUse = dayBoxBordered;
                     }
                  
-                    break;
                 }
                 else { // otherwise, load the appropriate week box
                     
