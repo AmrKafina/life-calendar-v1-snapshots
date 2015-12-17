@@ -50,7 +50,7 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        PrintWriter out = response.getWriter();
+      //  PrintWriter out = response.getWriter();
 
        // response.setContentType("image/png");
         
