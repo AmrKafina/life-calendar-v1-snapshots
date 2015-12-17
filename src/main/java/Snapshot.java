@@ -423,9 +423,7 @@ public class Snapshot extends HttpServlet {
             
         }
         else { // a weeksSnapshot
-            
-            return finalSnapshot;
-            
+                        
             // loads the images from memory
             
              inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black_small.png");
