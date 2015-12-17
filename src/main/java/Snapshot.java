@@ -183,6 +183,9 @@ public class Snapshot extends HttpServlet {
         // draws the template
         graphics.drawImage(snapshotTemplate, 0, 0, null);
         
+        if (snapshotType == 2)
+            return finalSnapshot;
+        
         // sets the font for the title
         graphics.setColor(blackColor);
         graphics.setFont(titleFont);
@@ -410,61 +413,61 @@ public class Snapshot extends HttpServlet {
             
             // loads the images from memory
             
-           /* inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black.png");
-            Image weekBoxBlack = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_blue.png");
-            Image weekBoxBlue = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_green.png");
-            Image weekBoxGreen = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey.png");
-            Image weekBoxGrey = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_pink.png");
-            Image weekBoxPink = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple.png");
-            Image weekBoxPurple = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_red.png");
-            Image weekBoxRed = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_yellow.png");
-            Image weekBoxYellow = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_white.png");
-            Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
-            
-            
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black.png");
-            Image dayBoxBlack = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_blue.png");
-            Image dayBoxBlue = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green.png");
-            Image dayBoxGreen = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey.png");
-            Image dayBoxGrey = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_pink.png");
-            Image dayBoxPink = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple.png");
-            Image dayBoxPurple = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_red.png");
-            Image dayBoxRed = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow.png");
-            Image dayBoxYellow = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
-            Image dayBoxBordered = ImageIO.read(inputStream); // the blank/transparent day box
+            /* inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black@half.png");
+             Image weekBoxBlack = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_blue@half.png");
+             Image weekBoxBlue = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_green@half.png");
+             Image weekBoxGreen = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey@half.png");
+             Image weekBoxGrey = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_pink@half.png");
+             Image weekBoxPink = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple@half.png");
+             Image weekBoxPurple = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_red@half.png");
+             Image weekBoxRed = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_yellow@half.png");
+             Image weekBoxYellow = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_white@half.png");
+             Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
+             
+             
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black@half.png");
+             Image dayBoxBlack = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_blue@half.png");
+             Image dayBoxBlue = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green@half.png");
+             Image dayBoxGreen = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey@half.png");
+             Image dayBoxGrey = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_pink@half.png");
+             Image dayBoxPink = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple@half.png");
+             Image dayBoxPurple = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_red@half.png");
+             Image dayBoxRed = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow@half.png");
+             Image dayBoxYellow = ImageIO.read(inputStream);
+             
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white@half.png");
+             Image dayBoxBordered = ImageIO.read(inputStream); // the blank/transparent day box
 
             
             // initializes some values
