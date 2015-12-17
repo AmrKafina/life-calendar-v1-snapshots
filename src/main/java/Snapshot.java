@@ -50,7 +50,7 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-      //  PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
 
        // response.setContentType("image/png");
         
@@ -75,9 +75,9 @@ public class Snapshot extends HttpServlet {
         
         graphics.drawImage(snapshotTemplate, 0, 0, null);
         
-        OutputStream out = response.getOutputStream();
-        ImageIO.write(finalSnapshot, "png", out);
-        out.close();
+        OutputStream out1 = response.getOutputStream();
+        ImageIO.write(finalSnapshot, "png", out1);
+        out1.close();
         
         
         String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
