@@ -64,8 +64,8 @@ public class Snapshot extends HttpServlet {
         InputStream inputStream;
         Image snapshotTemplate;
         
-        snapshotWidth = 460;
-        snapshotHeight = 737;
+        snapshotWidth = 4608;
+        snapshotHeight = 7373;
         finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
         graphics = finalSnapshot.createGraphics();
         
