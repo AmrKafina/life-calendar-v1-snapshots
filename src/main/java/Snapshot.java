@@ -492,11 +492,13 @@ public class Snapshot extends HttpServlet {
             
             // this is where the drawing begins
             
-            for (int i = 0; rowNumber < 89; i++) {
+            for (int i = 0; rowNumber < 90; i++) {
                 
                 if (i == 53) { // starts a new row every 53 boxes
                     rowNumber++;
                     i = 0;
+                    if (rowNumber == 90)
+                        break;
                 }
                 
                 Image imageToUse;
@@ -537,7 +539,7 @@ public class Snapshot extends HttpServlet {
                 }
                 else { // otherwise, load the appropriate week box
                     
-                    switch (data[(rowNumber * 53) + i]) { // TODO FIX THIS VALUE uses the appropriate image, according to the data
+                    switch (data[(rowNumber * 53) + i]) { // uses the appropriate image, according to the data
                             
                         case 1:
                             imageToUse = weekBoxGreen;
