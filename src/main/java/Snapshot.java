@@ -160,6 +160,20 @@ public class Snapshot extends HttpServlet {
             // loads the yearsSnapshot template
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot_Template.png");
             snapshotTemplate = ImageIO.read(inputStream);
+            
+            
+            snapshotWidth = 4608;
+            snapshotHeight = 7373;
+            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
+            graphics = finalSnapshot.createGraphics();
+            
+            // loads the yearsSnapshot template
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Weeks_Snapshot_Template.png");
+            snapshotTemplate = ImageIO.read(inputStream);
+
+            graphics.drawImage(snapshotTemplate, 0, 0, null);
+
+            return finalSnapshot;            
 
             
         }
@@ -182,9 +196,6 @@ public class Snapshot extends HttpServlet {
         
         // draws the template
         graphics.drawImage(snapshotTemplate, 0, 0, null);
-        
-        if (snapshotType == 2)
-            return finalSnapshot;
         
         // sets the font for the title
         graphics.setColor(blackColor);
