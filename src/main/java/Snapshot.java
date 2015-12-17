@@ -501,7 +501,7 @@ public class Snapshot extends HttpServlet {
                 
                 Image imageToUse;
                 
-                if (i == 52) { // draws the day box (at the end of each row
+             /*   if (i == 52) { // draws the day box (at the end of each row
                     switch (data[(rowNumber * 53) + 52]) { // TODO data of rowNumber at element 52
                         case 1:
                             imageToUse = dayBoxGreen;
@@ -570,10 +570,10 @@ public class Snapshot extends HttpServlet {
                             imageToUse = weekBoxBordered;
                     }
 
-                }
+                } */
                 
                 // now that the image is correctly loaded, we can finally draw it
-                graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
+              //  graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
                 
             }
 
