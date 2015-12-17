@@ -180,25 +180,11 @@ public class Snapshot extends HttpServlet {
             snapshotTemplate = ImageIO.read(inputStream);
             
             
-            snapshotWidth = 4608;
-            snapshotHeight = 7373;
-            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
-            graphics = finalSnapshot.createGraphics();
-            
-            // loads the yearsSnapshot template
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Weeks_Snapshot_Template.png");
-            snapshotTemplate = ImageIO.read(inputStream);
-
-            graphics.drawImage(snapshotTemplate, 0, 0, null);
-
-            return finalSnapshot;
-
-            
         }
         else { // a weeksSnapshot
             
-            snapshotWidth = 4608;
-            snapshotHeight = 7373;
+            snapshotWidth = 2304;
+            snapshotHeight = 3687;
             finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
             graphics = finalSnapshot.createGraphics();
             
