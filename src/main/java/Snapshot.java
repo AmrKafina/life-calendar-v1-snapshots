@@ -76,7 +76,7 @@ public class Snapshot extends HttpServlet {
         graphics.drawImage(snapshotTemplate, 0, 0, null);
         
         OutputStream out1 = response.getOutputStream();
-        ImageIO.write(finalSnapshot, "png", out1);
+       // ImageIO.write(finalSnapshot, "png", out1);
         out1.close();
         
         
