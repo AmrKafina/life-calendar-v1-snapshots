@@ -486,7 +486,7 @@ public class Snapshot extends HttpServlet {
             // initializes some values
             int margin = 4;
             int rowPadding = 283;
-            int topPadding = 513;
+            int topPadding = 411;
             int boxSize = 30;
             int rowNumber = 0;
             
