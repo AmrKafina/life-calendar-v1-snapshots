@@ -73,7 +73,7 @@ public class Snapshot extends HttpServlet {
         inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot_Template.png");
         snapshotTemplate = ImageIO.read(inputStream);
         
-       // graphics.drawImage(snapshotTemplate, 0, 0, null);
+        graphics.drawImage(snapshotTemplate, 0, 0, null);
         
        // OutputStream out1 = response.getOutputStream();
        // ImageIO.write(finalSnapshot, "png", out1);
