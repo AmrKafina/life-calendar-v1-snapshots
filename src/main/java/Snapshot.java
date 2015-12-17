@@ -423,7 +423,7 @@ public class Snapshot extends HttpServlet {
             
         }
         else { // a weeksSnapshot
-                        
+            
             // loads the images from memory
             
              inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black_small.png");
@@ -492,7 +492,7 @@ public class Snapshot extends HttpServlet {
             
             // this is where the drawing begins
             
-            for (int i = 0; rowNumber < 9; i++) {
+            for (int i = 0; rowNumber < 90; i++) {
                 
                 if (i == 53) { // starts a new row every 53 boxes
                     rowNumber++;
@@ -502,7 +502,7 @@ public class Snapshot extends HttpServlet {
                 Image imageToUse;
                 
                 if (i == 52) { // draws the day box (at the end of each row
-                    switch (data[52]) { // TODO data of rowNumber at element 52
+                    switch (data[(rowNumber * 90) + 52]) { // TODO data of rowNumber at element 52
                         case 1:
                             imageToUse = dayBoxGreen;
                             break;
@@ -537,7 +537,7 @@ public class Snapshot extends HttpServlet {
                 }
                 else { // otherwise, load the appropriate week box
                     
-                    switch (data[i + rowNumber * 53]) { // TODO FIX THIS VALUE uses the appropriate image, according to the data
+                    switch (data[(rowNumber * 90) + i]) { // TODO FIX THIS VALUE uses the appropriate image, according to the data
                             
                         case 1:
                             imageToUse = weekBoxGreen;
