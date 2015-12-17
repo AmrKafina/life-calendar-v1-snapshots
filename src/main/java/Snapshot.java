@@ -502,7 +502,7 @@ public class Snapshot extends HttpServlet {
                 Image imageToUse;
                 
                 if (i == 52) { // draws the day box (at the end of each row
-                    switch (data[(rowNumber * 90) + 52]) { // TODO data of rowNumber at element 52
+                    switch (data[(rowNumber * 53) + 52]) { // TODO data of rowNumber at element 52
                         case 1:
                             imageToUse = dayBoxGreen;
                             break;
@@ -537,7 +537,7 @@ public class Snapshot extends HttpServlet {
                 }
                 else { // otherwise, load the appropriate week box
                     
-                    switch (data[(rowNumber * 90) + i]) { // TODO FIX THIS VALUE uses the appropriate image, according to the data
+                    switch (data[(rowNumber * 53) + i]) { // TODO FIX THIS VALUE uses the appropriate image, according to the data
                             
                         case 1:
                             imageToUse = weekBoxGreen;
