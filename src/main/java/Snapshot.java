@@ -165,8 +165,8 @@ public class Snapshot extends HttpServlet {
         }
         else { // a weeksSnapshot
             
-            snapshotWidth = 2048;
-            snapshotHeight = 2048;
+            snapshotWidth = 4608;
+            snapshotHeight = 7373;
             finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
             graphics = finalSnapshot.createGraphics();
             
@@ -555,7 +555,7 @@ public class Snapshot extends HttpServlet {
                 }
                 
                 // now that the image is correctly loaded, we can finally draw it
-                graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
+              //  graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
                 
             }
 
