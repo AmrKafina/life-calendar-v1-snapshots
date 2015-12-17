@@ -155,7 +155,7 @@ public class Snapshot extends HttpServlet {
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
         
         // this color is used for the title
-        Color blackColor = new Color(110,114,113);
+        Color blackColor = new Color(51, 51, 51);
 
         
         if (snapshotType == 0) { // if a yearsSnapshot
