@@ -50,7 +50,7 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        PrintWriter out = response.getWriter();
+      //  PrintWriter out = response.getWriter();
 
        // response.setContentType("image/png");
         
@@ -85,7 +85,7 @@ public class Snapshot extends HttpServlet {
         
         for ( int i = 0; i < fonts.length; i++ )
         {
-            out.println(fonts[i]);
+      //      out.println(fonts[i]);
         }
 
         try {
@@ -93,7 +93,7 @@ public class Snapshot extends HttpServlet {
             Font customFont = Font.createFont(Font.PLAIN, fontStream);
         }
         catch (Exception e) {
-            out.println(e.getMessage());
+      //      out.println(e.getMessage());
         }
 
        // out.close();
