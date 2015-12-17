@@ -64,13 +64,13 @@ public class Snapshot extends HttpServlet {
         InputStream inputStream;
         Image snapshotTemplate;
         
-        snapshotWidth = 460;
-        snapshotHeight = 737;
+        snapshotWidth = 4608;
+        snapshotHeight = 7373;
         finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
         graphics = finalSnapshot.createGraphics();
         
         // loads the yearsSnapshot template
-        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Weeks_Snapshot_Template.png");
+        inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot_Template.png");
         snapshotTemplate = ImageIO.read(inputStream);
         
         graphics.drawImage(snapshotTemplate, 0, 0, null);
