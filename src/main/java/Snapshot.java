@@ -66,8 +66,8 @@ public class Snapshot extends HttpServlet {
         
         snapshotWidth = 4608;
         snapshotHeight = 7373;
-     //   finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
-     //   graphics = finalSnapshot.createGraphics();
+        finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
+        graphics = finalSnapshot.createGraphics();
         
         // loads the yearsSnapshot template
        // inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot_Template.png");
