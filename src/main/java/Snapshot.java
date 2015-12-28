@@ -89,7 +89,7 @@ public class Snapshot extends HttpServlet {
         }
 
         try {
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chococooky.ttf");
             Font customFont = Font.createFont(Font.PLAIN, fontStream);
         }
         catch (Exception e) {
@@ -150,7 +150,7 @@ public class Snapshot extends HttpServlet {
         Image snapshotTemplate;
         
         // creates the font used for the title
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/blzee.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chococooky.ttf");
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
         
@@ -226,8 +226,8 @@ public class Snapshot extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
             Image yearCircleGrey = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_pink.png");
-            Image yearCirclePink = ImageIO.read(inputStream);
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_orange.png");
+            Image yearCircleOrange = ImageIO.read(inputStream);
             
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_purple.png");
             Image yearCirclePurple = ImageIO.read(inputStream);
@@ -282,7 +282,7 @@ public class Snapshot extends HttpServlet {
                         imageToUse = yearCircleYellow;
                         break;
                     case 8:
-                        imageToUse = yearCirclePink;
+                        imageToUse = yearCircleOrange;
                         break;
                     case 9:
                         imageToUse = yearCircleBlack;
@@ -312,8 +312,8 @@ public class Snapshot extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey.png");
             Image weekBoxGrey = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_pink.png");
-            Image weekBoxPink = ImageIO.read(inputStream);
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_orange.png");
+            Image weekBoxOrange = ImageIO.read(inputStream);
             
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple.png");
             Image weekBoxPurple = ImageIO.read(inputStream);
@@ -367,7 +367,7 @@ public class Snapshot extends HttpServlet {
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow.png");
                             break;
                         case 8:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_pink.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_orange.png");
                             break;
                         case 9:
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black.png");
@@ -406,7 +406,7 @@ public class Snapshot extends HttpServlet {
                         imageToUse = weekBoxYellow;
                         break;
                     case 8:
-                        imageToUse = weekBoxPink;
+                        imageToUse = weekBoxOrange;
                         break;
                     case 9:
                         imageToUse = weekBoxBlack;
@@ -438,8 +438,8 @@ public class Snapshot extends HttpServlet {
              inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey_small.png");
              Image weekBoxGrey = ImageIO.read(inputStream);
              
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_pink_small.png");
-             Image weekBoxPink = ImageIO.read(inputStream);
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_orange_small.png");
+             Image weekBoxOrange = ImageIO.read(inputStream);
              
              inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple_small.png");
              Image weekBoxPurple = ImageIO.read(inputStream);
@@ -467,8 +467,8 @@ public class Snapshot extends HttpServlet {
              inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey_small.png");
              Image dayBoxGrey = ImageIO.read(inputStream);
              
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_pink_small.png");
-             Image dayBoxPink = ImageIO.read(inputStream);
+             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_orange_small.png");
+             Image dayBoxOrange = ImageIO.read(inputStream);
              
              inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple_small.png");
              Image dayBoxPurple = ImageIO.read(inputStream);
@@ -527,7 +527,7 @@ public class Snapshot extends HttpServlet {
                             imageToUse = dayBoxYellow;
                             break;
                         case 8:
-                            imageToUse = dayBoxPink;
+                            imageToUse = dayBoxOrange;
                             break;
                         case 9:
                             imageToUse = dayBoxBlack;
@@ -563,7 +563,7 @@ public class Snapshot extends HttpServlet {
                             imageToUse = weekBoxYellow;
                             break;
                         case 8:
-                            imageToUse = weekBoxPink;
+                            imageToUse = weekBoxOrange;
                             break;
                         case 9:
                             imageToUse = weekBoxBlack;
