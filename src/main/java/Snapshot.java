@@ -89,7 +89,7 @@ public class Snapshot extends HttpServlet {
         }
 
         try {
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chococooky.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/OpenSans.ttf");
             Font customFont = Font.createFont(Font.PLAIN, fontStream);
         }
         catch (Exception e) {
@@ -150,7 +150,7 @@ public class Snapshot extends HttpServlet {
         Image snapshotTemplate;
         
         // creates the font used for the title
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/Chococooky.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/OpenSans.ttf");
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
         
