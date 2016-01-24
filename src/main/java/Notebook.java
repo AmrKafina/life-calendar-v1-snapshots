@@ -50,11 +50,8 @@ public class Notebook extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        OutputStream out;
-            out = response.getOutputStream();
-            out.println("NOTEBOOK IN YOUR FACE");
-      
-        out.close();
+        PrintWriter out = response.getWriter();
+        out.println("NOTEBOOK IN YOUR FACE");
 
         
     }
