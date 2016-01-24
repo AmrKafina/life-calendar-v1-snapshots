@@ -39,7 +39,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 
 
-import org.apache.pdfbox.*;
+import org.apache.pdfbox;
 
 
 @WebServlet(name = "notebook",urlPatterns = {"/notebook/*"})
