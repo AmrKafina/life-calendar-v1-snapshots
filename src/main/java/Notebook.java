@@ -57,35 +57,16 @@ public class Notebook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-        // Create a document and add a page to it
-        PDDocument document = new PDDocument();
-        PDPage page = new PDPage();
-        document.addPage( page );
-        
-        // Create a new font object selecting one of the PDF base fonts
-        PDFont font = PDType1Font.HELVETICA_BOLD;
-        
-        // Start a new content stream which will "hold" the to be created content
-        PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        
-        // Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
-        contentStream.beginText();
-        contentStream.setFont( font, 12 );
-        contentStream.moveTextPositionByAmount( 100, 700 );
-        contentStream.drawString( "Hello World" );
-        contentStream.endText();
-        
-        // Make sure that the content stream is closed:
-        contentStream.close();
-        
-        // Save the results and ensure that the document is properly closed:
-        document.save( "Hello World.pdf");
-        document.close();
-        }
-        catch (Exception e) {
             
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            output = createPDF();
+            
+            response.addHeader("Content-Type", "application/force-download");
+            response.addHeader("Content-Disposition", "attachment; filename=\"yourFile.pdf\"");
+            response.getOutputStream().write(output.toByteArray());
+            
+        } catch (Exception ex) {
         }
-        
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -130,448 +111,98 @@ public class Notebook extends HttpServlet {
         }
     }
     
-    public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) throws IOException, FontFormatException {
-
-        int snapshotWidth, snapshotHeight;
-        BufferedImage finalSnapshot;
-        Graphics2D graphics;
-        InputStream inputStream;
-        Image snapshotTemplate;
+    public ByteArrayOutputStream createPDF() throws IOException, COSVisitorException {
         
-        // creates the font used for the title
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/OpenSans.ttf");
-        Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
-        Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
+        PDDocument document;
+        PDPage page;
+        PDFont font;
+        PDPageContentStream contentStream;
+        PDJpeg front;
+        PDJpeg back;
         
-        // this color is used for the title
-        Color blackColor = new Color(51, 51, 51);
-
+        InputStream inputFront;
+        InputStream inputBack;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         
-        if (snapshotType == 0) { // if a yearsSnapshot
+        // Creating Document
+        document = new PDDocument();
+        
+        // Creating Pages
+        for(int i=0; i<2; i++) {
             
-            snapshotWidth = snapshotHeight = 2048;
-            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
-            graphics = finalSnapshot.createGraphics();
+            page = new PDPage();
             
-            // loads the yearsSnapshot template
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Years_Snapshot_Template.png");
-            snapshotTemplate = ImageIO.read(inputStream);
+            // Adding page to document
+            document.addPage(page);
+            
+            // Adding FONT to document
+            font = PDType1Font.HELVETICA;
+            
+            // Retrieve Image to be added to the PDF
+            //inputFront = new FileInputStream(new File("D:/Media/imageFront.jpg"));
+            //inputBack = new FileInputStream(new File("D:/Media/imageBack.jpg"));
+            
+            //BufferedImage buffFront = ImageIO.read(inputFront);
+            //BufferedImage resizedFront = Scalr.resize(buffFront, 460);
+            
+            //BufferedImage buffBack = ImageIO.read(inputBack);
+            //BufferedImage resizedBack = Scalr.resize(buffBack, 460);
+            
+            //front = new PDJpeg(document, resizedFront);
+            //back = new PDJpeg(document, resizedBack);
+            
+            // Next we start a new content stream which will "hold" the to be created content.
+            contentStream = new PDPageContentStream(document, page);
+            
+            // Let's define the content stream
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.moveTextPositionByAmount(10, 770);
+            contentStream.drawString("Amount: $1.00");
+            contentStream.endText();
+            
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.moveTextPositionByAmount(200, 770);
+            contentStream.drawString("Sequence Number: 123456789");
+            contentStream.endText();
+            
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.moveTextPositionByAmount(10, 760);
+            contentStream.drawString("Account: 123456789");
+            contentStream.endText();
+            
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.moveTextPositionByAmount(200, 760);
+            contentStream.drawString("Captura Date: 04/25/2011");
+            contentStream.endText();
+            
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.moveTextPositionByAmount(10, 750);
+            contentStream.drawString("Bank Number: 123456789");
+            contentStream.endText();
+            
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.moveTextPositionByAmount(200, 750);
+            contentStream.drawString("Check Number: 123456789");
+            contentStream.endText();            
+            
+            // Let's close the content stream       
+            contentStream.close();
             
         }
-        else if (snapshotType == 1) { // if a yearSnapshot
-            
-            snapshotWidth = snapshotHeight = 2048;
-            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
-            graphics = finalSnapshot.createGraphics();
-            
-            // loads the yearsSnapshot template
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Year_Snapshot_Template.png");
-            snapshotTemplate = ImageIO.read(inputStream);
-            
-            
-        }
-        else { // a weeksSnapshot
-            
-            snapshotWidth = 2304;
-            snapshotHeight = 3687;
-            finalSnapshot = new BufferedImage(snapshotWidth, snapshotHeight, BufferedImage.TYPE_INT_ARGB);
-            graphics = finalSnapshot.createGraphics();
-            
-            // loads the yearsSnapshot template
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/Weeks_Snapshot_Template.png");
-            snapshotTemplate = ImageIO.read(inputStream);
-
-            
-        }
-        // sets the background color to white
-        graphics.setColor(Color.WHITE);
-        graphics.fillRect(0, 0, snapshotWidth, snapshotHeight);
         
-        // draws the template
-        graphics.drawImage(snapshotTemplate, 0, 0, null);
+        // Finally Let's save the PDF
+        document.save(output);
+        document.close();
         
-        // sets the font for the title
-        graphics.setColor(blackColor);
-        graphics.setFont(titleFont);
-
-        // draws the title, centered horizontally
-        FontMetrics fm = graphics.getFontMetrics(titleFont);
-        int titleWidth = fm.stringWidth(snapshotTitle);
-        graphics.drawString(snapshotTitle, (snapshotWidth - titleWidth) / 2, 200);
-
-        
-        if (snapshotType == 0) { // if a yearsSnapshot
-            
-            // loads the images from memory
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
-            Image yearCircleBlack = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_blue.png");
-            Image yearCircleBlue = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_green.png");
-            Image yearCircleGreen = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_grey.png");
-            Image yearCircleGrey = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_orange.png");
-            Image yearCircleOrange = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_purple.png");
-            Image yearCirclePurple = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_red.png");
-            Image yearCircleRed = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_yellow.png");
-            Image yearCircleYellow = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_bordered.png");
-            Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
-            
-            int margin = 30;
-            int rowPadding = 274;
-            int topPadding = 349 + 72;
-            int circleSize = 120;
-            int rowNumber = 0;
-            
-            for (int i = 0; rowNumber < 9; i++) {
-                
-                if (i == 10) { // starts a new row every 10 circles
-                    rowNumber++;
-                    i = 0;
-                    if (rowNumber == 9)
-                        break;
-                }
-                
-                Image imageToUse;
-                
-                switch (data[i + rowNumber * 10]) { // uses the appropriate image, according to the data
-                        
-                    case 1:
-                        imageToUse = yearCircleGreen;
-                        break;
-                    case 2:
-                        imageToUse = yearCircleBlue;
-                        break;
-                    case 3:
-                        imageToUse = yearCircleRed;
-                        break;
-                    case 4:
-                        imageToUse = yearCirclePurple;
-                        break;
-                    case 5:
-                        imageToUse = yearCircleBordered;
-                        break;
-                    case 6:
-                        imageToUse = yearCircleGrey;
-                        break;
-                    case 7:
-                        imageToUse = yearCircleYellow;
-                        break;
-                    case 8:
-                        imageToUse = yearCircleOrange;
-                        break;
-                    case 9:
-                        imageToUse = yearCircleBlack;
-                        break;
-                    default:
-                        imageToUse = yearCircleBordered;
-                }
-                
-                graphics.drawImage(imageToUse, (rowPadding + i * (circleSize + margin)), (topPadding + rowNumber * (circleSize + margin)), (rowPadding + i * (circleSize + margin) + circleSize),
-                              (topPadding + rowNumber * (circleSize + margin) + circleSize), 0, 0, circleSize, circleSize, null);
-                
-            }
-            
-        }
-        else if (snapshotType == 1) { // if a yearSnapshot
-            
-            // loads the images from memory
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black.png");
-            Image weekBoxBlack = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_blue.png");
-            Image weekBoxBlue = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_green.png");
-            Image weekBoxGreen = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey.png");
-            Image weekBoxGrey = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_orange.png");
-            Image weekBoxOrange = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple.png");
-            Image weekBoxPurple = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_red.png");
-            Image weekBoxRed = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_yellow.png");
-            Image weekBoxYellow = ImageIO.read(inputStream);
-            
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_white.png");
-            Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
-            
-            int margin = 30;
-            int rowPadding = 274;
-            int topPadding = 349 + 72;
-            int boxSize = 120;
-            int rowNumber = 0;
-            
-            for (int i = 0; rowNumber <= 5; i++) {
-                
-                if (i == 10) { // starts a new row every 10 boxes
-                    rowNumber++;
-                    i = 0;
-                }
-                
-                
-                Image imageToUse;
-                
-                if (rowNumber == 5 && i == 2) { // loads and draws the day box, and then exits the loop
-                    switch (data[52]) {
-                        case 1:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green.png");
-                            break;
-                        case 2:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_blue.png");
-                            break;
-                        case 3:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_red.png");
-                            break;
-                        case 4:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple.png");
-                            break;
-                        case 5:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
-                            break;
-                        case 6:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey.png");
-                            break;
-                        case 7:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow.png");
-                            break;
-                        case 8:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_orange.png");
-                            break;
-                        case 9:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black.png");
-                            break;
-                        default:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white.png");
-                    }
-
-                    imageToUse = ImageIO.read(inputStream);
-                    
-                    graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
-                    break;
-                }
-                
-                switch (data[i + rowNumber * 10]) { // uses the appropriate image, according to the data
-                        
-                    case 1:
-                        imageToUse = weekBoxGreen;
-                        break;
-                    case 2:
-                        imageToUse = weekBoxBlue;
-                        break;
-                    case 3:
-                        imageToUse = weekBoxRed;
-                        break;
-                    case 4:
-                        imageToUse = weekBoxPurple;
-                        break;
-                    case 5:
-                        imageToUse = weekBoxBordered;
-                        break;
-                    case 6:
-                        imageToUse = weekBoxGrey;
-                        break;
-                    case 7:
-                        imageToUse = weekBoxYellow;
-                        break;
-                    case 8:
-                        imageToUse = weekBoxOrange;
-                        break;
-                    case 9:
-                        imageToUse = weekBoxBlack;
-                        break;
-                    default:
-                        imageToUse = weekBoxBordered;
-                }
-                
-                graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize),
-                                   (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
-                
-            }
-
-            
-        }
-        else { // a weeksSnapshot
-            
-            // loads the images from memory
-            
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_black_small.png");
-             Image weekBoxBlack = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_blue_small.png");
-             Image weekBoxBlue = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_green_small.png");
-             Image weekBoxGreen = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_grey_small.png");
-             Image weekBoxGrey = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_orange_small.png");
-             Image weekBoxOrange = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_purple_small.png");
-             Image weekBoxPurple = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_red_small.png");
-             Image weekBoxRed = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_yellow_small.png");
-             Image weekBoxYellow = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/week_box_white_small.png");
-             Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
-             
-             
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_black_small.png");
-             Image dayBoxBlack = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_blue_small.png");
-             Image dayBoxBlue = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_green_small.png");
-             Image dayBoxGreen = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_grey_small.png");
-             Image dayBoxGrey = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_orange_small.png");
-             Image dayBoxOrange = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_purple_small.png");
-             Image dayBoxPurple = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_red_small.png");
-             Image dayBoxRed = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_yellow_small.png");
-             Image dayBoxYellow = ImageIO.read(inputStream);
-             
-             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/day_box_white_small.png");
-             Image dayBoxBordered = ImageIO.read(inputStream); // the blank/transparent day box
-
-            
-            // initializes some values
-            int margin = 4;
-            int rowPadding = 283;
-            int topPadding = 411;
-            int boxSize = 30;
-            int rowNumber = 0;
-            
-            // this is where the drawing begins
-            
-            for (int i = 0; rowNumber < 90; i++) {
-                
-                if (i == 53) { // starts a new row every 53 boxes
-                    rowNumber++;
-                    i = 0;
-                    if (rowNumber == 90)
-                        break;
-                }
-                
-                Image imageToUse;
-                
-                if (i == 52) { // draws the day box (at the end of each row
-                    switch (data[(rowNumber * 53) + 52]) { // TODO data of rowNumber at element 52
-                        case 1:
-                            imageToUse = dayBoxGreen;
-                            break;
-                        case 2:
-                            imageToUse = dayBoxBlue;
-                            break;
-                        case 3:
-                            imageToUse = dayBoxRed;
-                            break;
-                        case 4:
-                            imageToUse = dayBoxPurple;
-                            break;
-                        case 5:
-                            imageToUse = dayBoxBordered;
-                            break;
-                        case 6:
-                            imageToUse = dayBoxGrey;
-                            break;
-                        case 7:
-                            imageToUse = dayBoxYellow;
-                            break;
-                        case 8:
-                            imageToUse = dayBoxOrange;
-                            break;
-                        case 9:
-                            imageToUse = dayBoxBlack;
-                            break;
-                        default:
-                            imageToUse = dayBoxBordered;
-                    }
-                 
-                }
-                else { // otherwise, load the appropriate week box
-                    
-                    switch (data[(rowNumber * 53) + i]) { // uses the appropriate image, according to the data
-                            
-                        case 1:
-                            imageToUse = weekBoxGreen;
-                            break;
-                        case 2:
-                            imageToUse = weekBoxBlue;
-                            break;
-                        case 3:
-                            imageToUse = weekBoxRed;
-                            break;
-                        case 4:
-                            imageToUse = weekBoxPurple;
-                            break;
-                        case 5:
-                            imageToUse = weekBoxBordered;
-                            break;
-                        case 6:
-                            imageToUse = weekBoxGrey;
-                            break;
-                        case 7:
-                            imageToUse = weekBoxYellow;
-                            break;
-                        case 8:
-                            imageToUse = weekBoxOrange;
-                            break;
-                        case 9:
-                            imageToUse = weekBoxBlack;
-                            break;
-                        default:
-                            imageToUse = weekBoxBordered;
-                    }
-
-                }
-                
-                // now that the image is correctly loaded, we can finally draw it
-                graphics.drawImage(imageToUse, (rowPadding + i * (boxSize + margin)), (topPadding + rowNumber * (boxSize + margin)), (rowPadding + i * (boxSize + margin) + boxSize), (topPadding + rowNumber * (boxSize + margin) + boxSize), 0, 0, boxSize, boxSize, null);
-                
-            }
-
-        }
-        
-        return finalSnapshot;
+        return output;
     }
+    
     
     
 }
