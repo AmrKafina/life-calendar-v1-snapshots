@@ -63,6 +63,7 @@ public class Notebook extends HttpServlet {
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             output = createPDF();
             
+            response.addHeader("Content-Disposition", "attachment; filename=\"yourFile.pdf\"");
             response.getOutputStream().write(output.toByteArray());
             
         } catch (Exception ex) {
