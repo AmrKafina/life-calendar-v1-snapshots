@@ -39,7 +39,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 
 
-import org.apache.pdfbox.pdmodel;
+import org.apache.pdfbox.pdmodel.*;
 
 
 @WebServlet(name = "notebook",urlPatterns = {"/notebook/*"})
