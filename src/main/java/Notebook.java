@@ -43,7 +43,7 @@ import java.awt.FontFormatException;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.pdmodel.font.*;
 import org.apache.pdfbox.pdmodel.edit.*;
-import org.apache.pdfbox.exceptions;
+import org.apache.pdfbox.exceptions.*;
 
 
 
