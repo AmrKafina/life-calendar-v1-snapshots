@@ -40,6 +40,8 @@ import java.awt.FontFormatException;
 
 
 import org.apache.pdfbox.pdmodel.*;
+import org.apache.pdfbox.pdmodel.font.*;
+
 
 
 @WebServlet(name = "notebook",urlPatterns = {"/notebook/*"})
