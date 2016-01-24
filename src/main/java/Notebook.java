@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStraem;
+import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import javax.imageio.ImageIO;
 
