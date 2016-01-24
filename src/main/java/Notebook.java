@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStraem;
 import java.io.ObjectInputStream;
 import javax.imageio.ImageIO;
 
@@ -117,8 +118,8 @@ public class Notebook extends HttpServlet {
         PDPage page;
         PDFont font;
         PDPageContentStream contentStream;
-        PDJpeg front;
-        PDJpeg back;
+       // PDJpeg front;
+       // PDJpeg back;
         
         InputStream inputFront;
         InputStream inputBack;
