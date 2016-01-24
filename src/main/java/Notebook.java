@@ -56,6 +56,7 @@ public class Notebook extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        try {
         // Create a document and add a page to it
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
@@ -80,6 +81,10 @@ public class Notebook extends HttpServlet {
         // Save the results and ensure that the document is properly closed:
         document.save( "Hello World.pdf");
         document.close();
+        }
+        catch (Exception e) {
+            
+        }
         
     }
     
