@@ -103,7 +103,7 @@ public class Notebook extends HttpServlet {
             // generates the notebook
             
             ByteArrayOutputStream output = new ByteArrayOutputStream();
-            output = createPDF((ArrayList<String>)notebookRequest.get(0), (ArrayList<String>)notebookRequest.get(1), (ArrayList<Integer>)notebookRequest.get(2), (int[])notebookRequest.get(3));
+            output = createPDF((ArrayList<String>)notebookRequest.get(0), (ArrayList<String>)notebookRequest.get(1), (ArrayList<Integer>)notebookRequest.get(2), (int[][])notebookRequest.get(3));
             
             response.setHeader("Content-Type", "application/pdf");
             response.setContentLength(output.size());
@@ -128,7 +128,7 @@ public class Notebook extends HttpServlet {
         }
     }
     
-    public ByteArrayOutputStream createPDF(ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[] weekColors) throws IOException, COSVisitorException {
+    public ByteArrayOutputStream createPDF(ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[][] weekColors) throws IOException, COSVisitorException {
         
         PDDocument document;
         PDPage page;
