@@ -18,6 +18,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
