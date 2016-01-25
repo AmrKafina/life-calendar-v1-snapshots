@@ -141,11 +141,13 @@ public class Notebook extends HttpServlet {
         InputStream inputBack;
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         
-        // Creating Document
+        // initialize the document
         document = new PDDocument();
         
-        // Creating Pages
-        for(int i=0; i<2; i++) {
+        int numberOfPages = noteNames.size();
+        
+        // create the pages
+        for(int i = 0; i < numberOfPages; i++) {
             
             page = new PDPage();
             
@@ -173,40 +175,11 @@ public class Notebook extends HttpServlet {
             
             // Let's define the content stream
             contentStream.beginText();
-            contentStream.setFont(font, 8);
+            contentStream.setFont(font, 60);
             contentStream.moveTextPositionByAmount(10, 770);
-            contentStream.drawString("Amount: $1.00");
+            contentStream.drawString(noteContents.get(i));
             contentStream.endText();
             
-            contentStream.beginText();
-            contentStream.setFont(font, 8);
-            contentStream.moveTextPositionByAmount(200, 770);
-            contentStream.drawString("Sequence Number: 123456789");
-            contentStream.endText();
-            
-            contentStream.beginText();
-            contentStream.setFont(font, 8);
-            contentStream.moveTextPositionByAmount(10, 760);
-            contentStream.drawString("Account: 123456789");
-            contentStream.endText();
-            
-            contentStream.beginText();
-            contentStream.setFont(font, 8);
-            contentStream.moveTextPositionByAmount(200, 760);
-            contentStream.drawString("Captura Date: 04/25/2011");
-            contentStream.endText();
-            
-            contentStream.beginText();
-            contentStream.setFont(font, 8);
-            contentStream.moveTextPositionByAmount(10, 750);
-            contentStream.drawString("Bank Number: 123456789");
-            contentStream.endText();
-            
-            contentStream.beginText();
-            contentStream.setFont(font, 8);
-            contentStream.moveTextPositionByAmount(200, 750);
-            contentStream.drawString("Check Number: 123456789");
-            contentStream.endText();            
             
             // Let's close the content stream       
             contentStream.close();
