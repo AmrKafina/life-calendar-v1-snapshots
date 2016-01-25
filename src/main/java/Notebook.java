@@ -70,7 +70,7 @@ public class Notebook extends HttpServlet {
             response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
             response.setHeader("Pragma", "public");
             
-            response.setContentType("application/pdf");
+            response.setHeader("Content-Type", "application/pdf");
             
             response.setContentLength(output.size());
             
