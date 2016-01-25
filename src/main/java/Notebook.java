@@ -63,8 +63,18 @@ public class Notebook extends HttpServlet {
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             output = createPDF();
             
-            response.addHeader("Content-Disposition", "attachment; filename=\"Notebook.pdf\"");
-            response.getOutputStream().write(output.toByteArray());
+            
+            response.setHeader("Expires", "0");
+            response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
+            response.setHeader("Pragma", "public");
+            
+            response.setContentType("application/pdf");
+            
+            response.setContentLength(output.size());
+            
+            ServletOutputStream out = response.getOutputStream();
+            output.writeTo(out);
+            out.flush();
             
         } catch (Exception ex) {
         }
