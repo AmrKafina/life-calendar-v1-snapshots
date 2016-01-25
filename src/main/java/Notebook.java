@@ -65,14 +65,9 @@ public class Notebook extends HttpServlet {
         
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             output = createPDF();
-            
-            
-            response.setHeader("Expires", "0");
-            response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
-            response.setHeader("Pragma", "public");
+           
             
             response.setHeader("Content-Type", "application/pdf");
-            
             response.setContentLength(output.size());
             
             ServletOutputStream out = response.getOutputStream();
