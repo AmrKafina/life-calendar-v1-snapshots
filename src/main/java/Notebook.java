@@ -62,8 +62,7 @@ public class Notebook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            
-            /*
+        
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             output = createPDF();
             
@@ -79,23 +78,6 @@ public class Notebook extends HttpServlet {
             ServletOutputStream out = response.getOutputStream();
             output.writeTo(out);
             out.flush();
-             */
-            
-            
-            String pdfFileName = "yourFile.pdf";
-            String contextPath = getServletContext().getRealPath(File.separator);
-            File pdfFile = new File(contextPath + pdfFileName);
-            
-            response.setContentType("application/pdf");
-            response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
-            response.setContentLength((int) pdfFile.length());
-            
-            FileInputStream fileInputStream = new FileInputStream(pdfFile);
-            OutputStream responseOutputStream = response.getOutputStream();
-            int bytes;
-            while ((bytes = fileInputStream.read()) != -1) {
-                responseOutputStream.write(bytes);
-            }
             
             
         } catch (Exception ex) {
