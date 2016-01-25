@@ -64,7 +64,7 @@ public class Notebook extends HttpServlet {
         try {
         
             ByteArrayOutputStream output = new ByteArrayOutputStream();
-            output = createPDF();
+          //  output = createPDF();
            
             
             response.setHeader("Content-Type", "application/pdf");
