@@ -81,10 +81,54 @@ public class Notebook extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-    
+        try {
+            // constructs the data from the "request" and stores it in "input"
+            int length = request.getContentLength();
+            byte[] input = new byte[length];
+            ServletInputStream sin = request.getInputStream();
+            int c, count = 0 ;
+            while ((c = sin.read(input, count, input.length-count)) != -1) {
+                count +=c;
+            }
+            sin.close();
+            
+            // reads the data from input and puts it in "notebookRequest"
+            ByteArrayInputStream bis = new ByteArrayInputStream(input);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            ArrayList<Object> notebookRequest = (ArrayList<Object>) ois.readObject();
+            
+            // sets the status of the response to "ok"
+            response.setStatus(HttpServletResponse.SC_OK);
+            
+            // generates the notebook
+            
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            output = createPDF((ArrayList<String>)notebookRequest.get(0), (ArrayList<String>)notebookRequest.get(1), (ArrayList<Integer>)notebookRequest.get(2), (int[])notebookRequest.get(3));
+            
+            response.setHeader("Content-Type", "application/pdf");
+            response.setContentLength(output.size());
+            
+            
+            // sends the data back to the client
+            ServletOutputStream out = response.getOutputStream();
+            output.writeTo(out);
+            out.flush();
+
+            
+        }
+        catch (Exception e) { // if something goes wrong, sets the status of the response to "bad request" and send back the error message
+            
+            try {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.getWriter().print(e.getMessage());
+                response.getWriter().close();
+            }
+            catch (IOException ioe) {
+            }
+        }
     }
     
-    public ByteArrayOutputStream createPDF() throws IOException, COSVisitorException {
+    public ByteArrayOutputStream createPDF(ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[] weekColors) throws IOException, COSVisitorException {
         
         PDDocument document;
         PDPage page;
