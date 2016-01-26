@@ -54,7 +54,7 @@ public class Snapshot extends HttpServlet {
             doPost(request, response);
         }
         catch (Exception e) {
-            out.println(e.getMessage());
+            response.getOutputStream().println(e.getMessage());
         }
 
       //  PrintWriter out = response.getWriter();
