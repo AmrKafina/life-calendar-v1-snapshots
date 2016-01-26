@@ -322,6 +322,10 @@ class Paragraph {
     
 }
 
+interface PdfElement {
+    public void draw(PDPageContentStream stream, PDRectangle region);
+}
+
 class TextPdfElement implements PdfElement {
     public enum TextAlignment {
         CENTER,
