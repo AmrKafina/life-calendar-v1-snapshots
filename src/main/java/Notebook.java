@@ -136,38 +136,15 @@ public class Notebook extends HttpServlet {
         PDPage page;
         PDFont font;
         PDPageContentStream contentStream;
-       // PDJpeg front;
-       // PDJpeg back;
         
-        InputStream inputFront;
-        InputStream inputBack;
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         
         // initialize the document
         document = new PDDocument();
         
-        
-        PDRectangle rectangle = new PDRectangle();
-        
-        
-        
         font = PDType1Font.HELVETICA_BOLD; // Or whatever font you want.
         int fontSize = 16; // Or whatever font size you want.
-        Color color = new Color(16225054);
 
-        String text = "Lorem ipsum dolor sit amet, dictas epicuri mentitum cu cum. Eos unum ferri maiorum id. An pro illum habemus eloquentiam, malorum fastidii per ad, labores invidunt ut cum. Te autem iudicabit mei. Eum ex lobortis accusamus, nobis decore omittam eu eos, modo feugiat an quo. Tale mediocrem ei ius, suas accusamus voluptaria id sea.";
-        
-        Paragraph paragraph = new Paragraph(130, font, fontSize, text);
-
-        // the position Y of the text element
-        float initY = 9.275f;
-        for(String line : paragraph.getLines()) {
-            new TextPdfElement(
-                               line,
-                               font, fontSize, color, 0.900f, initY, TextPdfElement.TextAlignment.LEFT).draw(contentStream, rectangle);
-            // increase value of position Y to mimic line breaking
-            initY+=0.15f;
-        }
         
         page = new PDPage(PDPage.PAGE_SIZE_A5);
         
@@ -176,7 +153,7 @@ public class Notebook extends HttpServlet {
 
         
         // Next we start a new content stream which will "hold" the to be created content.
-        contentStream = new PDPageContentStream(document, page, true, false);
+        contentStream = new PDPageContentStream(document, page);
         contentStream.beginText();
         contentStream.setFont( font, fontSize );
 
@@ -199,59 +176,16 @@ public class Notebook extends HttpServlet {
         contentStream.drawString(text.substring(start));
         
         contentStream.endText();
-        
     
         // Let's close the content stream
         contentStream.close();
         
-        /*
-        int numberOfPages = noteNames.size();
-        
-        // create the pages
-        for(int i = 0; i < numberOfPages; i++) {
-            
-            page = new PDPage();
-            
-            // Adding page to document
-            document.addPage(page);
-            
-            // Adding FONT to document
-            font = PDType1Font.HELVETICA;
-            
-            // Retrieve Image to be added to the PDF
-            //inputFront = new FileInputStream(new File("D:/Media/imageFront.jpg"));
-            //inputBack = new FileInputStream(new File("D:/Media/imageBack.jpg"));
-            
-            //BufferedImage buffFront = ImageIO.read(inputFront);
-            //BufferedImage resizedFront = Scalr.resize(buffFront, 460);
-            
-            //BufferedImage buffBack = ImageIO.read(inputBack);
-            //BufferedImage resizedBack = Scalr.resize(buffBack, 460);
-            
-            //front = new PDJpeg(document, resizedFront);
-            //back = new PDJpeg(document, resizedBack);
-            
-            
-            // Let's define the content stream
-            contentStream.beginText();
-            contentStream.setFont(font, 60);
-            contentStream.moveTextPositionByAmount(10, 770);
-            contentStream.drawString(noteContents.get(i));
-            contentStream.endText();
-            
-            
-            // Let's close the content stream       
-            contentStream.close();
-            
-        }
-        */
         // Finally Let's save the PDF
         document.save(output);
         document.close();
         
         return output;
     }
-    
     
     int[] possibleWrapPoints(String text) {
         String[] split = text.split("(?<=\\W)");
@@ -261,161 +195,5 @@ public class Notebook extends HttpServlet {
             ret[i] = ret[i-1] + split[i].length();
         return ret;
     }
-
     
-    
-}
-
-class Paragraph {
-    
-    /** width of this paragraph */
-    private int width;
-    
-    /** text to write */
-    private String text;
-    
-    /** font to use */
-    private PDFont font;
-    
-    /** font size to use */
-    private int fontSize;
-    
-    public Paragraph(int width, PDFont font, int fontSize, String text) {
-        this.text = text;
-        this.font = font;
-        this.width = width;
-        this.fontSize = fontSize;
-    }
-    
-    /**
-     * Break the text in lines
-     * @return
-     */
-    public List getLines() throws IOException {
-        List result = new ArrayList();
-        
-        String[] split = text.split("(?<=\\W)");
-        int[] possibleWrapPoints = new int[split.length];
-        possibleWrapPoints[0] = split[0].length();
-        for ( int i = 1 ; i < split.length ; i++ ) {
-            possibleWrapPoints[i] = possibleWrapPoints[i-1] + split[i].length();
-        }
-        
-        int start = 0;
-        int end = 0;
-        for ( int i : possibleWrapPoints ) {
-            float width = font.getStringWidth(text.substring(start,i)) / 1000 * fontSize;
-            if ( start < end && width > this.width ) {
-                result.add(text.substring(start,end));
-                start = end;
-            }
-            end = i;
-        }
-        // Last piece of text
-        result.add(text.substring(start));
-        return result;
-    }
-    
-    public float getFontHeight() {
-        return font.getFontDescriptor().getFontBoundingBox().getHeight() / 1000 * fontSize;
-    }
-    
-    public int getWidth() {
-        return width;
-    }
-    
-    public String getText() {
-        return text;
-    }
-    
-    public PDFont getFont() {
-        return font;
-    }
-    
-    public int getFontSize() {
-        return fontSize;
-    }
-    
-}
-
-interface PdfElement {
-    public void draw(PDPageContentStream stream, PDRectangle region);
-}
-
-class TextPdfElement implements PdfElement {
-    public enum TextAlignment {
-        CENTER,
-        LEFT,
-        RIGHT
-    };
-    
-    private String message;
-    private PDFont font;
-    private float fontSize;
-    private Color fontcolor;
-    private float x;
-    private float y;
-    private TextAlignment align = TextAlignment.LEFT;
-    
-    public TextPdfElement() {}
-    
-    public TextPdfElement( String message, PDFont font, float fontSize, Color fontColor, float x, float y, TextAlignment align ) {
-        this.message = message;
-        this.font = font;
-        this.fontSize = fontSize;
-        this.fontcolor = fontColor;
-        this.x = x;
-        this.y = y;
-        this.align = align;
-    }
-    
-    public void setMessage(String message) {
-        this.message = message;
-    }
-    
-    public void setFont(PDFont font) {
-        this.font = font;
-    }
-    
-    public void setFontSize(float fontSize) {
-        this.fontSize = fontSize;
-    }
-    
-    public void setFontColor(Color fontColor) {
-        this.fontcolor = fontColor;
-    }
-    
-    public void setPosition(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
-    
-    public void setTextAlignment(TextAlignment align) {
-        this.align = align;
-    }
-    
-    @Override
-    public void draw(PDPageContentStream contentStream, PDRectangle region) {
-        if ( this.message == null)
-            return;
-        
-        try {
-            contentStream.beginText();
-            
-            contentStream.setFont( this.font, this.fontSize );
-            contentStream.setNonStrokingColor(this.fontcolor);
-            if (this.align == TextAlignment.CENTER) {
-                float stringWidth = font.getStringWidth( this.message )*fontSize/1000f;
-                float centerXPos = ( region.getWidth() - stringWidth ) / 2f;
-                contentStream.setTextTranslation(centerXPos, region.getHeight() -  (this.y*72) );
-            } else {
-                contentStream.setTextTranslation(this.x * 72, region.getHeight() - (this.y*72) );
-            }
-            
-            contentStream.drawString( this.message );
-            contentStream.endText();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
