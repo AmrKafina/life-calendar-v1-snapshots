@@ -152,7 +152,7 @@ public class Notebook extends HttpServlet {
             float startX = mediabox.getLowerLeftX() + margin;
             float startY = mediabox.getUpperRightY() - margin;
             
-            String text = "I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox";
+            String text = "ThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospaces";
             List<String> lines = new ArrayList<String>();
             int lastSpace = -1;
             while (text.length() > 0)
