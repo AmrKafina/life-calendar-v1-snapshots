@@ -132,57 +132,80 @@ public class Notebook extends HttpServlet {
     
     public ByteArrayOutputStream createPDF(ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[][] weekColors) throws IOException, COSVisitorException {
         
-        PDDocument document;
-        PDPage page;
-        PDFont font;
-        PDPageContentStream contentStream;
-        
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         
-        // initialize the document
-        document = new PDDocument();
-        
-        font = PDType1Font.HELVETICA_BOLD; // Or whatever font you want.
-        int fontSize = 16; // Or whatever font size you want.
-
-        
-        page = new PDPage(PDPage.PAGE_SIZE_A5);
-        
-        // Adding page to document
-        document.addPage(page);
-
-        
-        // Next we start a new content stream which will "hold" the to be created content.
-        contentStream = new PDPageContentStream(document, page);
-        contentStream.beginText();
-        contentStream.setFont( font, fontSize );
-
-        int start = 0;
-        int end = 0;
-        int height = 10;
-        for ( int i : possibleWrapPoints(text) ) {
-            float width = font.getStringWidth(text.substring(start,i)) / 1000 * fontSize;
-            if ( start < end && width > paragraphWidth ) {
-                // Draw partial text and increase height
-                contentStream.moveTextPositionByAmount(10 , height);
-                contentStream.drawString(text.substring(start,end));
-                height += font.getFontDescriptor().getFontBoundingBox().getHeight() / 1000 * fontSize;
-                start = end;
+        PDDocument doc = null;
+        try
+        {
+            doc = new PDDocument();
+            PDPage page = new PDPage();
+            doc.addPage(page);
+            PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+            
+            PDFont pdfFont = PDType1Font.HELVETICA;
+            float fontSize = 25;
+            float leading = 1.5f * fontSize;
+            
+            PDRectangle mediabox = page.findMediaBox();
+            float margin = 72;
+            float width = mediabox.getWidth() - 2*margin;
+            float startX = mediabox.getLowerLeftX() + margin;
+            float startY = mediabox.getUpperRightY() - margin;
+            
+            String text = "I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox";
+            List<String> lines = new ArrayList<String>();
+            int lastSpace = -1;
+            while (text.length() > 0)
+            {
+                int spaceIndex = text.indexOf(' ', lastSpace + 1);
+                if (spaceIndex < 0)
+                    spaceIndex = text.length();
+                String subString = text.substring(0, spaceIndex);
+                float size = fontSize * pdfFont.getStringWidth(subString) / 1000;
+                System.out.printf("'%s' - %f of %f\n", subString, size, width);
+                if (size > width)
+                {
+                    if (lastSpace < 0)
+                        lastSpace = spaceIndex;
+                    subString = text.substring(0, lastSpace);
+                    lines.add(subString);
+                    text = text.substring(lastSpace).trim();
+                    System.out.printf("'%s' is line\n", subString);
+                    lastSpace = -1;
+                }
+                else if (spaceIndex == text.length())
+                {
+                    lines.add(text);
+                    System.out.printf("'%s' is line\n", text);
+                    text = "";
+                }
+                else
+                {
+                    lastSpace = spaceIndex;
+                }
             }
-            end = i;
+            
+            contentStream.beginText();
+            contentStream.setFont(pdfFont, fontSize);
+            contentStream.moveTextPositionByAmount(startX, startY);            
+            for (String line: lines)
+            {
+                contentStream.drawString(line);
+                contentStream.moveTextPositionByAmount(0, -leading);
+            }
+            contentStream.endText(); 
+            contentStream.close();
+            
+            doc.save(output);
         }
-        // Last piece of text
-        contentStream.moveTextPositionByAmount(10 , height);
-        contentStream.drawString(text.substring(start));
+        finally
+        {
+            if (doc != null)
+            {
+                doc.close();
+            }
+        }
         
-        contentStream.endText();
-    
-        // Let's close the content stream
-        contentStream.close();
-        
-        // Finally Let's save the PDF
-        document.save(output);
-        document.close();
         
         return output;
     }
