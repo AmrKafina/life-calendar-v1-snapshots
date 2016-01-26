@@ -275,7 +275,7 @@ class Paragraph {
     public List getLines() throws IOException {
         List result = new ArrayList();
         
-        String[] split = text.split("(?<=\w)");
+        String[] split = text.split("(?<=\\W)");
         int[] possibleWrapPoints = new int[split.length];
         possibleWrapPoints[0] = split[0].length();
         for ( int i = 1 ; i < split.length ; i++ ) {
