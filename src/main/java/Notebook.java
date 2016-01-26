@@ -144,7 +144,7 @@ public class Notebook extends HttpServlet {
         document = new PDDocument();
         
         
-        PDFont font = PDType1Font.HELVETICA_BOLD; // Or whatever font you want.
+        font = PDType1Font.HELVETICA_BOLD; // Or whatever font you want.
         int fontSize = 16; // Or whatever font size you want.
         int paragraphWidth = 200;
         String text = "Lorem ipsum dolor sit amet, dictas epicuri mentitum cu cum. Eos unum ferri maiorum id. An pro illum habemus eloquentiam, malorum fastidii per ad, labores invidunt ut cum. Te autem iudicabit mei. Eum ex lobortis accusamus, nobis decore omittam eu eos, modo feugiat an quo. Tale mediocrem ei ius, suas accusamus voluptaria id sea.";
