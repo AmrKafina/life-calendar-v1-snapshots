@@ -159,6 +159,7 @@ public class Notebook extends HttpServlet {
         // Next we start a new content stream which will "hold" the to be created content.
         contentStream = new PDPageContentStream(document, page);
         contentStream.beginText();
+        contentStream.setFont( font, fontSize );
 
         int start = 0;
         int end = 0;
