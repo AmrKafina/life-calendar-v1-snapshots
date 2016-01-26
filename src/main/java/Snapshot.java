@@ -50,6 +50,13 @@ public class Snapshot extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        try {
+            doPost(request, response);
+        }
+        catch (Exception e) {
+            out.println(e.getMessage());
+        }
+
       //  PrintWriter out = response.getWriter();
 
        // response.setContentType("image/png");
@@ -58,6 +65,10 @@ public class Snapshot extends HttpServlet {
        // File f = new File(pathToWeb + "sync_problem.png");
       //  BufferedImage bi = ImageIO.read(inputStream);
         
+        //  OutputStream out = response.getOutputStream();
+
+        
+        /*
         int snapshotWidth, snapshotHeight;
         BufferedImage finalSnapshot;
         Graphics2D graphics;
@@ -97,6 +108,8 @@ public class Snapshot extends HttpServlet {
         }
 
        // out.close();
+         
+         */
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
