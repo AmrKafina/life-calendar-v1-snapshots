@@ -147,11 +147,27 @@ public class Notebook extends HttpServlet {
         document = new PDDocument();
         
         
+        PDRectangle rectangle = new PDRectangle();
+        
+        
+        
         font = PDType1Font.HELVETICA_BOLD; // Or whatever font you want.
         int fontSize = 16; // Or whatever font size you want.
-        int paragraphWidth = 200;
+        Color color = new Color(16225054);
+
         String text = "Lorem ipsum dolor sit amet, dictas epicuri mentitum cu cum. Eos unum ferri maiorum id. An pro illum habemus eloquentiam, malorum fastidii per ad, labores invidunt ut cum. Te autem iudicabit mei. Eum ex lobortis accusamus, nobis decore omittam eu eos, modo feugiat an quo. Tale mediocrem ei ius, suas accusamus voluptaria id sea.";
         
+        Paragraph paragraph = new Paragraph(130, font, fontSize, text);
+
+        // the position Y of the text element
+        float initY = 9.275f;
+        for(String line : paragraph.getLines()) {
+            new TextPdfElement(
+                               line,
+                               font, fontSize, color, 0.900f, initY, TextPdfElement.TextAlignment.LEFT).draw(contentStream, rectangle);
+            // increase value of position Y to mimic line breaking
+            initY+=0.15f;
+        }
         
         page = new PDPage(PDPage.PAGE_SIZE_A5);
         
@@ -160,7 +176,7 @@ public class Notebook extends HttpServlet {
 
         
         // Next we start a new content stream which will "hold" the to be created content.
-        contentStream = new PDPageContentStream(document, page);
+        contentStream = new PDPageContentStream(document, page, true, false);
         contentStream.beginText();
         contentStream.setFont( font, fontSize );
 
