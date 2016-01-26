@@ -101,7 +101,6 @@ public class Notebook extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             
             // generates the notebook
-            
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             output = createPDF((ArrayList<String>)notebookRequest.get(0), (ArrayList<String>)notebookRequest.get(1), (ArrayList<Integer>)notebookRequest.get(2), (int[][])notebookRequest.get(3));
             
@@ -144,6 +143,48 @@ public class Notebook extends HttpServlet {
         // initialize the document
         document = new PDDocument();
         
+        
+        PDFont font = PDType1Font.HELVETICA_BOLD; // Or whatever font you want.
+        int fontSize = 16; // Or whatever font size you want.
+        int paragraphWidth = 200;
+        String text = "Lorem ipsum dolor sit amet, dictas epicuri mentitum cu cum. Eos unum ferri maiorum id. An pro illum habemus eloquentiam, malorum fastidii per ad, labores invidunt ut cum. Te autem iudicabit mei. Eum ex lobortis accusamus, nobis decore omittam eu eos, modo feugiat an quo. Tale mediocrem ei ius, suas accusamus voluptaria id sea.";
+        
+        
+        page = new PDPage(PDPage.PAGE_SIZE_A5);
+        
+        // Adding page to document
+        document.addPage(page);
+
+        
+        // Next we start a new content stream which will "hold" the to be created content.
+        contentStream = new PDPageContentStream(document, page);
+        contentStream.beginText();
+
+        int start = 0;
+        int end = 0;
+        int height = 10;
+        for ( int i : possibleWrapPoints(text) ) {
+            float width = font.getStringWidth(text.substring(start,i)) / 1000 * fontSize;
+            if ( start < end && width > paragraphWidth ) {
+                // Draw partial text and increase height
+                content.moveTextPositionByAmount(10 , height);
+                content.drawString(text.substring(start,end));
+                height += font.getFontDescriptor().getFontBoundingBox().getHeight() / 1000 * fontSize;
+                start = end;
+            }
+            end = i;
+        }
+        // Last piece of text
+        content.moveTextPositionByAmount(10 , height);
+        content.drawString(text.substring(start));
+        
+        contentStream.endText();
+        
+    
+        // Let's close the content stream
+        contentStream.close();
+        
+        
         int numberOfPages = noteNames.size();
         
         // create the pages
@@ -170,8 +211,6 @@ public class Notebook extends HttpServlet {
             //front = new PDJpeg(document, resizedFront);
             //back = new PDJpeg(document, resizedBack);
             
-            // Next we start a new content stream which will "hold" the to be created content.
-            contentStream = new PDPageContentStream(document, page);
             
             // Let's define the content stream
             contentStream.beginText();
@@ -193,6 +232,16 @@ public class Notebook extends HttpServlet {
         return output;
     }
     
+    
+    int[] possibleWrapPoints(String text) {
+        String[] split = text.split("(?<=\\W)");
+        int[] ret = new int[split.length];
+        ret[0] = split[0].length();
+        for ( int i = 1 ; i < split.length ; i++ )
+            ret[i] = ret[i-1] + split[i].length();
+        return ret;
+    }
+
     
     
 }
