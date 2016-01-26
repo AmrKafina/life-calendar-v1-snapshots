@@ -184,7 +184,7 @@ public class Notebook extends HttpServlet {
         // Let's close the content stream
         contentStream.close();
         
-        
+        /*
         int numberOfPages = noteNames.size();
         
         // create the pages
@@ -224,7 +224,7 @@ public class Notebook extends HttpServlet {
             contentStream.close();
             
         }
-        
+        */
         // Finally Let's save the PDF
         document.save(output);
         document.close();
