@@ -167,16 +167,16 @@ public class Notebook extends HttpServlet {
             float width = font.getStringWidth(text.substring(start,i)) / 1000 * fontSize;
             if ( start < end && width > paragraphWidth ) {
                 // Draw partial text and increase height
-                content.moveTextPositionByAmount(10 , height);
-                content.drawString(text.substring(start,end));
+                contentStream.moveTextPositionByAmount(10 , height);
+                contentStream.drawString(text.substring(start,end));
                 height += font.getFontDescriptor().getFontBoundingBox().getHeight() / 1000 * fontSize;
                 start = end;
             }
             end = i;
         }
         // Last piece of text
-        content.moveTextPositionByAmount(10 , height);
-        content.drawString(text.substring(start));
+        contentStream.moveTextPositionByAmount(10 , height);
+        contentStream.drawString(text.substring(start));
         
         contentStream.endText();
         
