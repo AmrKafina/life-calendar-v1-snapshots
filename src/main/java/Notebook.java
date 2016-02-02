@@ -109,6 +109,7 @@ public class Notebook extends HttpServlet {
                 
                 PrintWriter writer = response.getWriter();
                 writer.write("hello!\n");
+                writer.flush();
                 
             }
             else { // aka if formatted (pdf) notebook
@@ -123,10 +124,10 @@ public class Notebook extends HttpServlet {
                 // sends the data back to the client
                 ServletOutputStream out = response.getOutputStream();
                 output.writeTo(out);
+                out.flush();
             
             }
             
-            out.flush();
             
         }
         catch (Exception e) { // if something goes wrong, sets the status of the response to "bad request" and send back the error message
