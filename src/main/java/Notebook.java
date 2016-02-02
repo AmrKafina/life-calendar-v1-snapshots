@@ -111,7 +111,17 @@ public class Notebook extends HttpServlet {
                 response.setHeader("Content-Type", "text/plain");
                 
                 PrintWriter writer = response.getWriter();
-                String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<Note>)notebookRequest.get(3));
+                
+                ArrayList<Note> notes = new ArrayList<Note>();
+                
+                notes.add(new Note("myNote1", "This is some content in my note!", 1, null));
+                notes.add(new Note("myNote2", "This is some content in my note!", 2, null));
+                notes.add(new Note("myNote3", "This is some content in my note!", 3, null));
+
+                String resultNotebook = exportNotes("My Notebook", 1, notes);
+
+//              String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<Note>)notebookRequest.get(3));
+                
                 writer.write(resultNotebook);
                 writer.flush();
                 
@@ -237,14 +247,14 @@ public class Notebook extends HttpServlet {
 
     public String exportNotes(String notebookTitle, int noteSelection, ArrayList<Note> notes) {
         
-                   // String result;
-                   // result = notebookTitle;
-                   // result += "\n\n";
+         String result;
+         result = notebookTitle;
+         result += "\n\n";
         
-      //  Note note = notes.get(0);
-        //result += note.name + "\n\n" + note.content + "\n\n";
+        for (Note note : notes)
+            result += note.name + "\n\n" + note.content + "\n\n";
         
-        return "BUT THIS WORKS MAN WHAT IS GOING ON";
+        return result;
         
     }
     
