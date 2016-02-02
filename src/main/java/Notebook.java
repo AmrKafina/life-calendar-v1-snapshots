@@ -247,7 +247,7 @@ public class Notebook extends HttpServlet {
 
     public String exportNotes(String notebookTitle, int noteSelection, ArrayList<Note> notes) {
         
-         String result;
+        /* String result;
          result = notebookTitle;
          result += "\n\n";
         
@@ -255,6 +255,8 @@ public class Notebook extends HttpServlet {
             result += note.name + "\n\n" + note.content + "\n\n";
         
         return result;
+         */
+        return "BUT THIS WORKS MAN";
         
     }
     
