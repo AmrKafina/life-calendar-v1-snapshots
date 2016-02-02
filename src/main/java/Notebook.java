@@ -111,7 +111,7 @@ public class Notebook extends HttpServlet {
                 response.setHeader("Content-Type", "text/plain");
                 
                 PrintWriter writer = response.getWriter();
-                String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5));
+                String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<Note>)notebookRequest.get(3));
                 writer.write(resultNotebook);
                 writer.flush();
                 
@@ -120,7 +120,7 @@ public class Notebook extends HttpServlet {
                 
                 // generates the notebook
                 ByteArrayOutputStream output = new ByteArrayOutputStream();
-                output = createPDF((String)notebookRequest.get(0), (Integer)notebookRequest.get(1), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5), (int[][])notebookRequest.get(6));
+                output = createPDF((String)notebookRequest.get(0), (Integer)notebookRequest.get(1), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5), (int[][])notebookRequest.get(6)); // THIS CALL NEEDS FIXING
                 
                 response.setHeader("Content-Type", "application/pdf");
                 response.setContentLength(output.size());
@@ -235,32 +235,16 @@ public class Notebook extends HttpServlet {
     }
     
 
-    public String exportNotes(String notebookTitle, int noteSelection, ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations) {
+    public String exportNotes(String notebookTitle, int noteSelection, ArrayList<Note> notes) {
         
                     String result;
                     result = notebookTitle;
                     result += "\n\n";
         
-        
-                    for (int noteLocation : noteLocations) {
-                    
-                        if (!noteNames.get(noteLocation).equals("") || !noteContents.get(noteLocation).equals("")) { // aka if the note is not empty
-                            if (!noteNames.get(noteLocation).equals("")) {
-                                result += noteNames.get(noteLocation);
-                                result += "\n\n";
-                            }
-                             else {
-                                 if (!noteContents.get(noteLocation).equals("")) {
-                                     result += "Week " + noteLocation;
-                                     result += "\n\n";
-                                 }
-                             }
-                                 
-                             if (!noteContents.get(noteLocation).equals("")) {
-                                 result += noteContents.get(noteLocation);
-                                 result += "\n\n";
-                             }
-                        }
+                    for (Note note : notes) {
+                
+                        result += note.name + "\n\n" + note.content + "\n\n";
+                        
                     
                     }
         
