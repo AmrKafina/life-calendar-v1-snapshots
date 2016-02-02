@@ -286,4 +286,4 @@ class Note implements Serializable {
         this.lastEdit = lastEdit;
         
     }
-    
+}
