@@ -239,7 +239,7 @@ public class Notebook extends HttpServlet {
                     result += "\n\n";
         
         
-                   /* for (int noteLocation : noteLocations) {
+                    for (int noteLocation : noteLocations) {
                     
                         if (!noteNames.get(noteLocation).equals("") || !noteContents.get(noteLocation).equals("")) { // aka if the note is not empty
                             if (!noteNames.get(noteLocation).equals("")) {
@@ -260,7 +260,7 @@ public class Notebook extends HttpServlet {
                         }
                     
                     }
-                    */
+                    
                     
         return result;
         
