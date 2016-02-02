@@ -103,19 +103,30 @@ public class Notebook extends HttpServlet {
             // sets the status of the response to "ok"
             response.setStatus(HttpServletResponse.SC_OK);
             
-            // generates the notebook
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-            output = createPDF((ArrayList<String>)notebookRequest.get(0), (ArrayList<String>)notebookRequest.get(1), (ArrayList<Integer>)notebookRequest.get(2), (int[][])notebookRequest.get(3));
             
-            response.setHeader("Content-Type", "application/pdf");
-            response.setContentLength(output.size());
+            if ((int)notebookRequest.get(1) == 0) { // aka if unformatted notebook
+                response.setHeader("Content-Type", "text/plain");
+                
+                PrintWriter writer = response.getWriter();
+                writer.write("hello!\n");
+                
+            }
+            else { // aka if formatted (pdf) notebook
+                
+                // generates the notebook
+                ByteArrayOutputStream output = new ByteArrayOutputStream();
+                output = createPDF((String)notebookRequest.get(0), (int)notebookRequest.get(1), (int)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5), (int[][])notebookRequest.get(6));
+                
+                response.setHeader("Content-Type", "application/pdf");
+                response.setContentLength(output.size());
+                
+                // sends the data back to the client
+                ServletOutputStream out = response.getOutputStream();
+                output.writeTo(out);
             
+            }
             
-            // sends the data back to the client
-            ServletOutputStream out = response.getOutputStream();
-            output.writeTo(out);
             out.flush();
-
             
         }
         catch (Exception e) { // if something goes wrong, sets the status of the response to "bad request" and send back the error message
@@ -130,7 +141,7 @@ public class Notebook extends HttpServlet {
         }
     }
     
-    public ByteArrayOutputStream createPDF(ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[][] weekColors) throws IOException, COSVisitorException {
+    public ByteArrayOutputStream createPDF(String notebookTitle, int notebookType, int noteSelection, ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[][] weekColors) throws IOException, COSVisitorException {
         
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         
@@ -152,7 +163,7 @@ public class Notebook extends HttpServlet {
             float startX = mediabox.getLowerLeftX() + margin;
             float startY = mediabox.getUpperRightY() - margin;
             
-            String text = "ThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospacesThisissomeverylongtextwithnospaces";
+            String text = "This is some sample text in a pdf document. Lorem ipsum!";
             List<String> lines = new ArrayList<String>();
             int lastSpace = -1;
             while (text.length() > 0)
@@ -205,7 +216,6 @@ public class Notebook extends HttpServlet {
                 doc.close();
             }
         }
-        
         
         return output;
     }
