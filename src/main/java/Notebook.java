@@ -108,7 +108,7 @@ public class Notebook extends HttpServlet {
                 response.setHeader("Content-Type", "text/plain");
                 
                 PrintWriter writer = response.getWriter();
-                writer.write(exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5));
+                writer.write(exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5)));
                 writer.flush();
                 
             }
@@ -232,7 +232,7 @@ public class Notebook extends HttpServlet {
     
 
     public String exportNotes(String notebookTitle, int noteSelection, ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations) {
-                    
+        
                     String result;
                     result = notebookTitle;
                     result += "\n\n";
