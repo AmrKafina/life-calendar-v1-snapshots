@@ -259,7 +259,7 @@ public class Notebook extends HttpServlet {
                     
                     }
                     
-        return result;
+        return "function works!";
         
     }
     
