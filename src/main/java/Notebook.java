@@ -243,7 +243,7 @@ public class Notebook extends HttpServlet {
             result += noteLocation + " ";
         }
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             
             result += "This is some very fancy text, don't you think? " + i + i + i + "\n";
             
