@@ -230,4 +230,6 @@ public class Notebook extends HttpServlet {
         return ret;
     }
     
+    public String exportNotes(String notebookTitle, int noteSelection, ArrayList<String> noteNames, ArrayList<String> noteContents, ArrayList<Integer> noteLocations, int[][] weekColors
+    
 }
