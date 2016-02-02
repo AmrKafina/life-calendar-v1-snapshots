@@ -237,12 +237,12 @@ public class Notebook extends HttpServlet {
 
     public String exportNotes(String notebookTitle, int noteSelection, ArrayList<Note> notes) {
         
-                    String result;
-                    result = notebookTitle;
-                    result += "\n\n";
+                   // String result;
+                   // result = notebookTitle;
+                   // result += "\n\n";
         
         Note note = notes.get(0);
-        result += note.name + "\n\n" + note.content + "\n\n";
+        //result += note.name + "\n\n" + note.content + "\n\n";
         
         return note.name;
         
