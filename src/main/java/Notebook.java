@@ -108,8 +108,7 @@ public class Notebook extends HttpServlet {
                 response.setHeader("Content-Type", "text/plain");
                 
                 PrintWriter writer = response.getWriter();
-                // String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5));
-                String resultNotebook = "how are you!";
+                String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5));
                 writer.write(resultNotebook);
                 writer.flush();
                 
