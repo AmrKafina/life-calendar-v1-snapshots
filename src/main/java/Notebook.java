@@ -239,31 +239,21 @@ public class Notebook extends HttpServlet {
                     result += "\n\n";
         
         
-        for (int noteLocation : noteLocations) {
-            result += noteLocation + " ";
-        }
-        
-        for (int i = 0; i < 100000; i++) {
-            
-            result += "This is some very fancy text, don't you think? " + i + i + i + "\n";
-            
-        }
-        
                    /* for (int noteLocation : noteLocations) {
                     
-                        if (noteNames.get(noteLocation) != "" || noteContents.get(noteLocation) != "") { // aka if the note is not empty
-                            if (noteNames.get(noteLocation) != "") {
+                        if (!noteNames.get(noteLocation).equals("") || !noteContents.get(noteLocation).equals("")) { // aka if the note is not empty
+                            if (!noteNames.get(noteLocation).equals("")) {
                                 result += noteNames.get(noteLocation);
                                 result += "\n\n";
                             }
                              else {
-                                 if (noteContents.get(noteLocation) != "") {
+                                 if (!noteContents.get(noteLocation).equals("")) {
                                      result += "Week " + noteLocation;
                                      result += "\n\n";
                                  }
                              }
                                  
-                             if (noteContents.get(noteLocation) != "") {
+                             if (!noteContents.get(noteLocation).equals("")) {
                                  result += noteContents.get(noteLocation);
                                  result += "\n\n";
                              }
