@@ -104,7 +104,7 @@ public class Notebook extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             
             
-            if ((int)notebookRequest.get(1) == 0) { // aka if unformatted notebook
+            if (notebookRequest.get(1) == 0) { // aka if unformatted notebook
                 response.setHeader("Content-Type", "text/plain");
                 
                 PrintWriter writer = response.getWriter();
@@ -115,7 +115,7 @@ public class Notebook extends HttpServlet {
                 
                 // generates the notebook
                 ByteArrayOutputStream output = new ByteArrayOutputStream();
-                output = createPDF((String)notebookRequest.get(0), (int)notebookRequest.get(1), (int)notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5), (int[][])notebookRequest.get(6));
+                output = createPDF((String)notebookRequest.get(0), notebookRequest.get(1), notebookRequest.get(2), (ArrayList<String>)notebookRequest.get(3), (ArrayList<String>)notebookRequest.get(4), (ArrayList<Integer>)notebookRequest.get(5), (int[][])notebookRequest.get(6));
                 
                 response.setHeader("Content-Type", "application/pdf");
                 response.setContentLength(output.size());
