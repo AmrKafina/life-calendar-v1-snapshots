@@ -245,7 +245,7 @@ public class Notebook extends HttpServlet {
                                 result += "\n\n";
                             }
                              else {
-                                 (noteContents.get(noteLocation) != "") {
+                                 if (noteContents.get(noteLocation) != "") {
                                      result += "Week " + noteLocation;
                                      result += "\n\n";
                              }
