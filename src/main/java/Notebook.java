@@ -41,6 +41,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 
@@ -260,10 +263,27 @@ public class Notebook extends HttpServlet {
                         }
                     
                     }
-                    
+        
                     
         return result;
         
     }
     
 }
+
+
+class Note implements Serializable {
+    
+    public String name;
+    public String content;
+    public int location;
+    public Date lastEdit;
+    
+    public Note(String name, String content, int location, Date lastEdit) {
+        this.name = name;
+        this.content = content;
+        this.location = location;
+        this.lastEdit = lastEdit;
+        
+    }
+    
