@@ -239,7 +239,7 @@ public class Notebook extends HttpServlet {
                     
                     for (int noteLocation : noteLocations) {
                     
-                        if (noteNames.get(noteLocation) != "" OR noteContents.get(noteLocation) != "") { // aka if the note is not empty
+                        if (noteNames.get(noteLocation) != "" || noteContents.get(noteLocation) != "") { // aka if the note is not empty
                             if (noteNames.get(noteLocation) != "") {
                                 result += noteNames.get(noteLocation);
                                 result += "\n\n";
