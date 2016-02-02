@@ -244,7 +244,7 @@ public class Notebook extends HttpServlet {
         Note note = notes.get(0);
         result += note.name + "\n\n" + note.content + "\n\n";
         
-        return result;
+        return note.name;
         
     }
     
