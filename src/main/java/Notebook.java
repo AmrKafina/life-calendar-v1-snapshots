@@ -112,13 +112,13 @@ public class Notebook extends HttpServlet {
                 
                 PrintWriter writer = response.getWriter();
                 
-                ArrayList<Note> notes = new ArrayList<Note>();
+                //ArrayList<Note> notes = new ArrayList<Note>();
                 
-                notes.add(new Note("myNote1", "This is some content in my note!", 1, null));
-                notes.add(new Note("myNote2", "This is some content in my note!", 2, null));
-                notes.add(new Note("myNote3", "This is some content in my note!", 3, null));
+                //notes.add(new Note("myNote1", "This is some content in my note!", 1, null));
+                //notes.add(new Note("myNote2", "This is some content in my note!", 2, null));
+                //notes.add(new Note("myNote3", "This is some content in my note!", 3, null));
 
-                String resultNotebook = exportNotes("My Notebook", 1, notes);
+                String resultNotebook = exportNotes("My Notebook", 1, null);
 
 //              String resultNotebook = exportNotes((String)notebookRequest.get(0), (Integer)notebookRequest.get(2), (ArrayList<Note>)notebookRequest.get(3));
                 
