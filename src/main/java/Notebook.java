@@ -235,7 +235,7 @@ public class Notebook extends HttpServlet {
                     
                     String result;
                     result = notebookTitle;
-                    result += "\n\n"
+                    result += "\n\n";
                     
                     for (int noteLocation : noteLocations) {
                     
