@@ -50,8 +50,8 @@ public class SnapshotIOS extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        OutputStream out = response.getOutputStream();
-        out.write("I can hear you!!");
+        PrintWriter out = response.getWriter();
+        out.println("I can hear you!!");
         out.close();
 
 
