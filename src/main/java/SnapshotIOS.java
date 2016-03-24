@@ -113,6 +113,9 @@ public class SnapshotIOS extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        
+        
+        
         try {
             // constructs the data from the "request" and stores it in "input"
             int length = request.getContentLength();
@@ -123,6 +126,13 @@ public class SnapshotIOS extends HttpServlet {
                 count +=c;
             }
             sin.close();
+            
+            String str = new String(input, StandardCharsets.UTF_8);
+
+            PrintWriter out = response.getWriter();
+            out.println(str);
+            out.close();
+
             
             // reads the data from input and puts it in "snapshotRequest"
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
