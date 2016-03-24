@@ -127,13 +127,18 @@ public class SnapshotIOS extends HttpServlet {
             }
             sin.close();
             
-            String str = new String(input, StandardCharsets.UTF_8);
+            String jsonString = new String(input, StandardCharsets.UTF_8);
 
             PrintWriter out = response.getWriter();
-            out.println(str);
+            out.println(jsonString);
             out.close();
 
             
+           // JSONObject requestObject = new JSONObject(jsonString);
+            
+           // requestObject.getJSONInteger
+
+            /*
             // reads the data from input and puts it in "snapshotRequest"
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
             ObjectInputStream ois = new ObjectInputStream(bis);
@@ -149,7 +154,7 @@ public class SnapshotIOS extends HttpServlet {
             OutputStream out = response.getOutputStream();
             ImageIO.write(generatedSnapshot, "png", out);
             out.close();
-            
+            */
         }
         catch (Exception e) { // if something goes wrong, sets the status of the response to "bad request" and send back the error message
             
@@ -161,6 +166,8 @@ public class SnapshotIOS extends HttpServlet {
             catch (IOException ioe) {
             }
         }
+             
+             
     }
     
     public BufferedImage generateSnapshot(String snapshotTitle, int snapshotType, int[] data) throws IOException, FontFormatException {
