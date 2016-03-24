@@ -145,7 +145,7 @@ public class SnapshotIOS extends HttpServlet {
             BufferedImage generatedSnapshot = generateSnapshot("test", 0, (int[])snapshotRequest.get(2), colors);
             
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write( originalImage, "png", baos );
+            ImageIO.write( generatedSnapshot, "png", baos );
             baos.flush();
             byte[] imageInByte = baos.toByteArray();
             baos.close();
