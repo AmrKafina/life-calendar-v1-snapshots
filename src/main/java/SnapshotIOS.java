@@ -131,11 +131,30 @@ public class SnapshotIOS extends HttpServlet {
             
             String jsonString = new String(input, StandardCharsets.UTF_8);
 
+            int[] colors = new int[90];
+            
+            for (int i = 0; i < 90; i++) {
+                if (i < 25)
+                    colors[i] = 3;
+                else
+                    colors[i] = 1;
+            }
+            
+            // generates the snapshot
+            BufferedImage generatedSnapshot = generateSnapshot("test", 0, (int[])snapshotRequest.get(2), colors);
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write( originalImage, "png", baos );
+            baos.flush();
+            byte[] imageInByte = baos.toByteArray();
+            baos.close();
+            
+            String base64String = Base64.encodeBase64String(imageInByte);
+            
             PrintWriter out = response.getWriter();
-            out.println(jsonString);
+            out.println(base64String);
             out.close();
 
-            
            // JSONObject requestObject = new JSONObject(jsonString);
             
            // requestObject.getJSONInteger
