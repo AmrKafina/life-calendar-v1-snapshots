@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Image;
 
 import java.util.ArrayList;
+import java.util.Base64;
 
 import java.io.File;
 import java.io.OutputStream;
@@ -39,9 +40,6 @@ import java.io.ByteArrayOutputStream;
 import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 import java.nio.charset.StandardCharsets;
-
-
-import org.apache.commons.codec.binary.Base64;
 
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
