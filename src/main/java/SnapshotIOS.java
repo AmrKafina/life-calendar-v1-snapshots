@@ -34,6 +34,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
