@@ -40,7 +40,7 @@ import java.awt.FontFormatException;
 
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
-public class Snapshot extends HttpServlet {
+public class SnapshotIOS extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     public SnapshotIOS() {
