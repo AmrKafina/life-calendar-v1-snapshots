@@ -37,6 +37,8 @@ import java.io.IOException;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
+import java.nio.charset.StandardCharsets
+
 
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
