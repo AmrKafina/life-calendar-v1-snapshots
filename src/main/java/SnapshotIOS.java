@@ -41,6 +41,8 @@ import java.awt.FontFormatException;
 import java.nio.charset.StandardCharsets;
 
 
+import org.apache.commons.codec.binary.Base64;
+
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
 public class SnapshotIOS extends HttpServlet {
