@@ -41,6 +41,8 @@ import java.awt.FontFormatException;
 import java.nio.charset.StandardCharsets;
 
 import javax.json;
+import org.apache.commons.codec.binary.Base64;
+
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
 public class SnapshotIOS extends HttpServlet {
@@ -135,7 +137,7 @@ public class SnapshotIOS extends HttpServlet {
             JSONObject jRequest  = new JSONObject(jsonString);
             String snapshotTitle = jRequest.getJSONObject("title");
             int snapshotType = jRequest.getJSONInteger("type");
-            int[] colors = jRequest.getJSONArray(@"colors");
+            int[] colors = jRequest.getJSONArray("colors");
             
             // generates the snapshot
             BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
