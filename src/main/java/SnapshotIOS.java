@@ -152,8 +152,21 @@ public class SnapshotIOS extends HttpServlet {
             
             InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
 
-            byte[] snapshotBytes = IOUtils.toByteArray(inputStream);
+            
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+            
+            int nRead;
+            byte[] data = new byte[16384];
+            
+            while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+            
+            buffer.flush();
+            
+            byte[] snapshotBytes = buffer.toByteArray();
 
+            
             String jSnapshot = Base64.encodeBase64String(snapshotBytes);
 
             // sets the status of the response to "ok"
