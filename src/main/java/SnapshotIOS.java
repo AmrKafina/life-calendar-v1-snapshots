@@ -138,7 +138,17 @@ public class SnapshotIOS extends HttpServlet {
             String snapshotTitle = jRequest.getString("title");
             int snapshotType = jRequest.getInt("type");
             
-            int[] colors = jRequest.getJSONArray("colors");
+            
+            // Retrieve number array from JSON object.
+            JSONArray jColors = jRequest.optJSONArray("colors");
+            
+            // Create an int array to accomodate the numbers.
+            int[] colors = new int[jColors.length()];
+            
+            // Extract numbers from JSON array.
+            for (int i = 0; i < jColors.length(); ++i) {
+                colors[i] = jColors.optInt(i);
+            }
             
             // generates the snapshot
             BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
