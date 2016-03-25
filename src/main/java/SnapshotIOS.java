@@ -151,11 +151,11 @@ public class SnapshotIOS extends HttpServlet {
             }
             
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
+            InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
             Image yearCircleBlack = ImageIO.read(inputStream);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(yearCircleBlack, "png", baos);
+            ImageIO.write(inputStream, "png", baos);
             baos.flush();
             byte[] imageInByte = baos.toByteArray();
             baos.close();
