@@ -144,29 +144,10 @@ public class SnapshotIOS extends HttpServlet {
                 colors[i] = jColors.optInt(i);
         
             // generate the snapshot using the extracted data
-           // BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
-            
-            //ByteArrayOutputStream out = new ByteArrayOutputStream();
-            //ImageIO.write(generatedSnapshot, "PNG", out);
-            //byte[] snapshotBytes = out.toByteArray();
-            
-            InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
-
-            
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-            
-            int nRead;
-            byte[] data = new byte[16384];
-            
-            while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
-                buffer.write(data, 0, nRead);
-            }
-            
-            buffer.flush();
-            
-            byte[] snapshotBytes = buffer.toByteArray();
-
-            
+            BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ImageIO.write(generatedSnapshot, "PNG", out);
+            byte[] snapshotBytes = out.toByteArray();
             String jSnapshot = Base64.encodeBase64String(snapshotBytes);
 
             // sets the status of the response to "ok"
