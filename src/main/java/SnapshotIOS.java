@@ -118,9 +118,6 @@ public class SnapshotIOS extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
-        
-        
         try {
             // constructs the data from the "request" and stores it in "input"
             int length = request.getContentLength();
@@ -132,49 +129,40 @@ public class SnapshotIOS extends HttpServlet {
             }
             sin.close();
             
+            // constrcuts the JSON object from the input
             String jsonString = new String(input, StandardCharsets.UTF_8);
-
             JSONObject jRequest  = new JSONObject(jsonString);
+            
+            // reads the title and type
             String snapshotTitle = jRequest.getString("title");
             int snapshotType = jRequest.getInt("type");
             
-            
-            // Retrieve number array from JSON object.
+            // creates an int array and reads the colors
             JSONArray jColors = jRequest.optJSONArray("colors");
-            
-            // Create an int array to accomodate the numbers.
             int[] colors = new int[jColors.length()];
-            
-            // Extract numbers from JSON array.
-            for (int i = 0; i < jColors.length(); ++i) {
+            for (int i = 0; i < jColors.length(); ++i)
                 colors[i] = jColors.optInt(i);
-            }
-            
-            
-            InputStream inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
-            Image yearCircleBlack = ImageIO.read(inputStream);
+        
+            // generate the snapshot using the extracted data
+            BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
 
-            byte[] bytes;
-            byte[] buffer = new byte[8192];
-            int bytesRead;
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-            try {
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    output.write(buffer, 0, bytesRead);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            bytes = output.toByteArray();
-            String encodedString = Base64.encodeToString(bytes, Base64.DEFAULT);
             
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ImageIO.write(generatedSnapshot, "PNG", out);
+            byte[] snapshotBytes = out.toByteArray();
             
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(inputStream, "png", baos);
-            baos.flush();
-            byte[] imageInByte = baos.toByteArray();
-            baos.close();
+            String jSnapshot = Base64.encodeBase64String(snapshotBytes);
 
+            // sets the status of the response to "ok"
+            response.setStatus(HttpServletResponse.SC_OK);
+
+            // finally sends back the snapshot
+            PrintWriter out = response.getWriter();
+            out.println(jSnapshot);
+            out.close();
+            
+            // convert the generated snapshot into a base64 string (to send it back as a JSON object)
+            
            /*
             // generates the snapshot
             BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
