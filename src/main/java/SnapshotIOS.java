@@ -136,7 +136,7 @@ public class SnapshotIOS extends HttpServlet {
 
             JSONObject jRequest  = new JSONObject(jsonString);
             String snapshotTitle = jRequest.getString("title");
-            int snapshotType = jRequest.getInteger("type");
+            int snapshotType = jRequest.getInt("type");
             int[] colors = jRequest.getArray("colors");
             
             // generates the snapshot
