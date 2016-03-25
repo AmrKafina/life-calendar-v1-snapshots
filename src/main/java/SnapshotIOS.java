@@ -157,9 +157,9 @@ public class SnapshotIOS extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
 
             // finally sends back the snapshot
-            PrintWriter out = response.getWriter();
-            out.println(jSnapshot);
-            out.close();
+            PrintWriter output = response.getWriter();
+            output.println(jSnapshot);
+            output.close();
             
             // convert the generated snapshot into a base64 string (to send it back as a JSON object)
             
