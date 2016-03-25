@@ -40,7 +40,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 import java.nio.charset.StandardCharsets;
 
-import javax.json.*;
+import javax.json.JSONArray;
+import javax.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 
 
