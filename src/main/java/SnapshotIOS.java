@@ -150,6 +150,17 @@ public class SnapshotIOS extends HttpServlet {
                 colors[i] = jColors.optInt(i);
             }
             
+            
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/images/year_circle_black.png");
+            Image yearCircleBlack = ImageIO.read(inputStream);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(yearCircleBlack, "png", baos);
+            baos.flush();
+            byte[] imageInByte = baos.toByteArray();
+            baos.close();
+
+           /*
             // generates the snapshot
             BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
             
@@ -169,6 +180,7 @@ public class SnapshotIOS extends HttpServlet {
             
            // requestObject.getJSONInteger
 
+            */
             /*
             // reads the data from input and puts it in "snapshotRequest"
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
