@@ -40,7 +40,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 import java.nio.charset.StandardCharsets;
 
-import java.util.Base64.Encoder;
+import javax.json
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
 public class SnapshotIOS extends HttpServlet {
@@ -132,17 +132,13 @@ public class SnapshotIOS extends HttpServlet {
             
             String jsonString = new String(input, StandardCharsets.UTF_8);
 
-            int[] colors = new int[90];
-            
-            for (int i = 0; i < 90; i++) {
-                if (i < 25)
-                    colors[i] = 3;
-                else
-                    colors[i] = 1;
-            }
+            JSONObject jRequest  = new JSONObject(jsonString);
+            String snapshotTitle = jRequest.getJSONObject("title");
+            int snapshotType = jRequest.getJSONInteger("type");
+            int[] colors = jRequest.getJSONArray(@"colors");
             
             // generates the snapshot
-            BufferedImage generatedSnapshot = generateSnapshot("test", 0, colors);
+            BufferedImage generatedSnapshot = generateSnapshot(snapshotTitle, snapshotType, colors);
             
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write( generatedSnapshot, "png", baos );
