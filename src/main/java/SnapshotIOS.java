@@ -40,7 +40,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
 import java.nio.charset.StandardCharsets;
 
-import javax.json
+import javax.json;
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
 public class SnapshotIOS extends HttpServlet {
