@@ -351,7 +351,7 @@ public class Snapshot extends HttpServlet {
             
             int margin = 30;
             int rowPadding = 274;
-            int topPadding = 569 + 72; //220
+            int topPadding = 569 + 72;
             int boxSize = 120;
             int rowNumber = 0;
             
