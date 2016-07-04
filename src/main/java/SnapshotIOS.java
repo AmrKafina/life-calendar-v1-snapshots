@@ -316,49 +316,49 @@ public class SnapshotIOS extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/white/year_circle.png");
             Image yearCircleBordered = ImageIO.read(inputStream); // the blank/transparent year circle
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_1/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_1/year_circle.png");
             Image yearCircleGradient1 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_2/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_2/year_circle.png");
             Image yearCircleGradient2 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_3/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_3/year_circle.png");
             Image yearCircleGradient3 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_4/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_4/year_circle.png");
             Image yearCircleGradient4 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_5/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_5/year_circle.png");
             Image yearCircleGradient5 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_6/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_6/year_circle.png");
             Image yearCircleGradient6 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_7/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_7/year_circle.png");
             Image yearCircleGradient7 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_8/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_8/year_circle.png");
             Image yearCircleGradient8 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_9/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_9/year_circle.png");
             Image yearCircleGradient9 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_10/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_10/year_circle.png");
             Image yearCircleGradient10 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_11/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_11/year_circle.png");
             Image yearCircleGradient11 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_12/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_12/year_circle.png");
             Image yearCircleGradient12 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_13/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_13/year_circle.png");
             Image yearCircleGradient13 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_14/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_14/year_circle.png");
             Image yearCircleGradient14 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_15/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_15/year_circle.png");
             Image yearCircleGradient15 = ImageIO.read(inputStream);
             
             
@@ -499,49 +499,49 @@ public class SnapshotIOS extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/white/week_box.png");
             Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_1/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_1/week_box.png");
             Image weekBoxGradient1 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_2/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_2/week_box.png");
             Image weekBoxGradient2 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_3/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_3/week_box.png");
             Image weekBoxGradient3 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_4/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_4/week_box.png");
             Image weekBoxGradient4 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_5/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_5/week_box.png");
             Image weekBoxGradient5 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_6/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_6/week_box.png");
             Image weekBoxGradient6 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_7/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_7/week_box.png");
             Image weekBoxGradient7 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_8/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_8/week_box.png");
             Image weekBoxGradient8 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_9/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_9/week_box.png");
             Image weekBoxGradient9 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_10/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_10/week_box.png");
             Image weekBoxGradient10 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_11/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_11/week_box.png");
             Image weekBoxGradient11 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_12/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_12/week_box.png");
             Image weekBoxGradient12 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_13/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_13/week_box.png");
             Image weekBoxGradient13 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_14/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_14/week_box.png");
             Image weekBoxGradient14 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_15/week_box.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_15/week_box.png");
             Image weekBoxGradient15 = ImageIO.read(inputStream);
             
             int margin = 30;
@@ -593,49 +593,49 @@ public class SnapshotIOS extends HttpServlet {
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/pink/day_box.png");
                             break;
                         case 11:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_1/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_1/day_box.png");
                             break;
                         case 12:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_2/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_2/day_box.png");
                             break;
                         case 13:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_3/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_3/day_box.png");
                             break;
                         case 14:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_4/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_4/day_box.png");
                             break;
                         case 15:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_5/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_5/day_box.png");
                             break;
                         case 16:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_6/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_6/day_box.png");
                             break;
                         case 17:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_7/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_7/day_box.png");
                             break;
                         case 18:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_8/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_8/day_box.png");
                             break;
                         case 19:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_9/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_9/day_box.png");
                             break;
                         case 20:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_10/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_10/day_box.png");
                             break;
                         case 21:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_11/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_11/day_box.png");
                             break;
                         case 22:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_12/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_12/day_box.png");
                             break;
                         case 23:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_13/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_13/day_box.png");
                             break;
                         case 24:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_14/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_14/day_box.png");
                             break;
                         case 25:
-                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_15/day_box.png");
+                            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_15/day_box.png");
                             break;
                         default:
                             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/white/day_box.png");
@@ -770,49 +770,49 @@ public class SnapshotIOS extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/white/week_box_small.png");
             Image weekBoxBordered = ImageIO.read(inputStream); // the blank/transparent week box
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_1/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_1/week_box_small.png");
             Image weekBoxGradient1 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_2/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_2/week_box_small.png");
             Image weekBoxGradient2 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_3/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_3/week_box_small.png");
             Image weekBoxGradient3 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_4/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_4/week_box_small.png");
             Image weekBoxGradient4 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_5/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_5/week_box_small.png");
             Image weekBoxGradient5 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_6/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_6/week_box_small.png");
             Image weekBoxGradient6 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_7/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_7/week_box_small.png");
             Image weekBoxGradient7 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_8/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_8/week_box_small.png");
             Image weekBoxGradient8 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_9/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_9/week_box_small.png");
             Image weekBoxGradient9 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_10/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_10/week_box_small.png");
             Image weekBoxGradient10 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_11/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_11/week_box_small.png");
             Image weekBoxGradient11 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_12/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_12/week_box_small.png");
             Image weekBoxGradient12 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_13/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_13/week_box_small.png");
             Image weekBoxGradient13 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_14/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_14/week_box_small.png");
             Image weekBoxGradient14 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_15/week_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_15/week_box_small.png");
             Image weekBoxGradient15 = ImageIO.read(inputStream);
             
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/black/day_box_small.png");
@@ -845,49 +845,49 @@ public class SnapshotIOS extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/white/day_box_small.png");
             Image dayBoxBordered = ImageIO.read(inputStream); // the blank/transparent day box
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_1/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_1/day_box_small.png");
             Image dayBoxGradient1 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_2/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_2/day_box_small.png");
             Image dayBoxGradient2 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_3/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_3/day_box_small.png");
             Image dayBoxGradient3 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_4/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_4/day_box_small.png");
             Image dayBoxGradient4 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_5/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_5/day_box_small.png");
             Image dayBoxGradient5 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_6/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_6/day_box_small.png");
             Image dayBoxGradient6 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_7/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_7/day_box_small.png");
             Image dayBoxGradient7 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_8/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_8/day_box_small.png");
             Image dayBoxGradient8 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_9/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_9/day_box_small.png");
             Image dayBoxGradient9 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_10/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_10/day_box_small.png");
             Image dayBoxGradient10 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_11/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_11/day_box_small.png");
             Image dayBoxGradient11 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_12/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_12/day_box_small.png");
             Image dayBoxGradient12 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_13/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_13/day_box_small.png");
             Image dayBoxGradient13 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_14/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_14/day_box_small.png");
             Image dayBoxGradient14 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradient_15/day_box_small.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_15/day_box_small.png");
             Image dayBoxGradient15 = ImageIO.read(inputStream);
             
             // initializes some values
