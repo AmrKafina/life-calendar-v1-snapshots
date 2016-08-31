@@ -260,7 +260,7 @@ public class Snapshot extends HttpServlet {
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_1/year_circle.png");
             Image yearCircleGradient1 = ImageIO.read(inputStream);
             
-            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradients/gradient_2/year_circle.png");
+            inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_2/year_circle.png");
             Image yearCircleGradient2 = ImageIO.read(inputStream);
 
             inputStream = this.getServletConfig().getServletContext().getResourceAsStream("/gradients/gradient_3/year_circle.png");
