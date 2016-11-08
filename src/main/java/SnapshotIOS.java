@@ -119,7 +119,6 @@ public class SnapshotIOS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
       request.setCharacterEncoding("utf-8");
-      response.setCharacterEncoding("utf-8");
 
         try {
             // constructs the data from the "request" and stores it in "input"
@@ -139,10 +138,6 @@ public class SnapshotIOS extends HttpServlet {
             // reads the title and type
             String snapshotTitle = jRequest.getString("title");
             int snapshotType = jRequest.getInt("type");
-
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.getWriter().print("错误:Sent json is " + jsonString);
-            response.getWriter().close();
 
             // creates an int array and reads the colors
             JSONArray jColors = jRequest.optJSONArray("colors");
