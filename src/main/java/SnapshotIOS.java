@@ -136,6 +136,10 @@ public class SnapshotIOS extends HttpServlet {
             String snapshotTitle = jRequest.getString("title");
             int snapshotType = jRequest.getInt("type");
 
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().print("Sent title is " + snapshotTitle);
+            response.getWriter().close();
+
             // creates an int array and reads the colors
             JSONArray jColors = jRequest.optJSONArray("colors");
             int[] colors = new int[jColors.length()];
