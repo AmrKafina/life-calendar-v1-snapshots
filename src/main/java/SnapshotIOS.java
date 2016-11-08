@@ -54,6 +54,7 @@ public class SnapshotIOS extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+      response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         out.println("错误I can hear you!!");
         out.close();
