@@ -131,9 +131,9 @@ public class SnapshotIOS extends HttpServlet {
 
             // constrcuts the JSON object from the input
             String jsonString = new String(input, StandardCharsets.UTF_8);
+            jsonString = org.apache.commons.lang3.StringEscapeUtils.unescapeJson(jsonString);
             JSONObject jRequest  = new JSONObject(jsonString);
-            jRequest = org.apache.commons.lang3.StringEscapeUtils.unescapeJson(jRequest);
-            
+
             // reads the title and type
             String snapshotTitle = jRequest.getString("title");
             //snapshotTitle = org.apache.commons.lang3.StringEscapeUtils.unescapeJava(snapshotTitle); // converts an escaped string back
