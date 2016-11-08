@@ -224,13 +224,12 @@ public class SnapshotIOS extends HttpServlet {
         Image snapshotTemplate;
 
         // creates the font used for the title
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/OpenSans.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/NotoSans-Regular.ttf");
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
 
         // this color is used for the title
         Color blackColor = new Color(51, 51, 51);
-
 
         if (snapshotType == 0) { // if a yearsSnapshot
 
@@ -277,7 +276,7 @@ public class SnapshotIOS extends HttpServlet {
 
         // sets the font for the title
         graphics.setColor(blackColor);
-        //graphics.setFont(titleFont);
+        graphics.setFont(titleFont);
 
         // draws the title, centered horizontally
         FontMetrics fm = graphics.getFontMetrics(titleFont);
