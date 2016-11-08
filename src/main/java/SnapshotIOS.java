@@ -118,6 +118,8 @@ public class SnapshotIOS extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+      request.setCharacterEncoding("utf-8");
+
         try {
             // constructs the data from the "request" and stores it in "input"
             int length = request.getContentLength();
