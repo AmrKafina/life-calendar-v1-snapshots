@@ -137,7 +137,7 @@ public class SnapshotIOS extends HttpServlet {
             int snapshotType = jRequest.getInt("type");
 
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.getWriter().print("Sent title is " + snapshotTitle);
+            response.getWriter().print("Sent json is " + jsonString);
             response.getWriter().close();
 
             // creates an int array and reads the colors
