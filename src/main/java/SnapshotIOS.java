@@ -56,7 +56,7 @@ public class SnapshotIOS extends HttpServlet {
 
       response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
-        out.println("错误I can hear you!!");
+        out.println("I can hear you!!");
         out.close();
 
 
@@ -281,7 +281,7 @@ public class SnapshotIOS extends HttpServlet {
         // draws the title, centered horizontally
         FontMetrics fm = graphics.getFontMetrics(titleFont);
         int titleWidth = fm.stringWidth(snapshotTitle);
-        graphics.drawString(snapshotTitle, (snapshotWidth - titleWidth) / 2, 200);
+        graphics.drawString("错误" + snapshotTitle, (snapshotWidth - titleWidth) / 2, 200);
 
 
         if (snapshotType == 0) { // if a yearsSnapshot
