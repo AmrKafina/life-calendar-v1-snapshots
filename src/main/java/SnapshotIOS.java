@@ -132,10 +132,11 @@ public class SnapshotIOS extends HttpServlet {
             // constrcuts the JSON object from the input
             String jsonString = new String(input, StandardCharsets.UTF_8);
             JSONObject jRequest  = new JSONObject(jsonString);
-
+            jRequest = org.apache.commons.lang3.StringEscapeUtils.unescapeJson(jRequest);
+            
             // reads the title and type
             String snapshotTitle = jRequest.getString("title");
-            snapshotTitle = org.apache.commons.lang3.StringEscapeUtils.unescapeJava(snapshotTitle); // converts an escaped string back
+            //snapshotTitle = org.apache.commons.lang3.StringEscapeUtils.unescapeJava(snapshotTitle); // converts an escaped string back
             int snapshotType = jRequest.getInt("type");
 
             // creates an int array and reads the colors
