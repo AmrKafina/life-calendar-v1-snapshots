@@ -277,7 +277,7 @@ public class SnapshotIOS extends HttpServlet {
 
         // sets the font for the title
         graphics.setColor(blackColor);
-        graphics.setFont(titleFont);
+        //graphics.setFont(titleFont);
 
         // draws the title, centered horizontally
         FontMetrics fm = graphics.getFontMetrics(titleFont);
