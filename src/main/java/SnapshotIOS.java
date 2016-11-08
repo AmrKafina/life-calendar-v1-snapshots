@@ -225,7 +225,7 @@ public class SnapshotIOS extends HttpServlet {
         Image snapshotTemplate;
 
         // creates the font used for the title
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/NotoSans-Regular.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/GoJuOn.ttf");
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
 
@@ -277,7 +277,7 @@ public class SnapshotIOS extends HttpServlet {
 
         // sets the font for the title
         graphics.setColor(blackColor);
-        //graphics.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 24));
+        graphics.setFont(titleFont);
 
         // draws the title, centered horizontally
         FontMetrics fm = graphics.getFontMetrics(titleFont);
