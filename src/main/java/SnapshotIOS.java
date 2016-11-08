@@ -225,7 +225,7 @@ public class SnapshotIOS extends HttpServlet {
         Image snapshotTemplate;
 
         // creates the font used for the title
-        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/GoJuOn.ttf");
+        InputStream fontStream = this.getServletConfig().getServletContext().getResourceAsStream("/WEB-INF/OpenSans.ttf");
         Font blzeeFont = Font.createFont(Font.PLAIN, fontStream);
         Font titleFont = blzeeFont.deriveFont(Font.PLAIN, 112);
 
@@ -282,7 +282,7 @@ public class SnapshotIOS extends HttpServlet {
         // draws the title, centered horizontally
         FontMetrics fm = graphics.getFontMetrics(titleFont);
         int titleWidth = fm.stringWidth(snapshotTitle);
-        graphics.drawString("错误" + snapshotTitle, (snapshotWidth - titleWidth) / 2, 200);
+        graphics.drawString(snapshotTitle, (snapshotWidth - titleWidth) / 2, 200);
 
 
         if (snapshotType == 0) { // if a yearsSnapshot
