@@ -42,7 +42,6 @@ import java.nio.charset.StandardCharsets;
 
 import org.json.*;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringEscapeUtils;
 
 @WebServlet(name = "snapshotios",urlPatterns = {"/snapshotios/*"})
 public class SnapshotIOS extends HttpServlet {
@@ -130,13 +129,11 @@ public class SnapshotIOS extends HttpServlet {
             sin.close();
 
             // constrcuts the JSON object from the input
-            String jsonString = new String(input);//, StandardCharsets.UTF_8);
-            //jsonString = org.apache.commons.lang3.StringEscapeUtils.unescapeJson(jsonString);
+            String jsonString = new String(input, StandardCharsets.UTF_8);
             JSONObject jRequest  = new JSONObject(jsonString);
 
             // reads the title and type
             String snapshotTitle = jRequest.getString("title");
-            //snapshotTitle = org.apache.commons.lang3.StringEscapeUtils.unescapeJava(snapshotTitle); // converts an escaped string back
             int snapshotType = jRequest.getInt("type");
 
             // creates an int array and reads the colors
